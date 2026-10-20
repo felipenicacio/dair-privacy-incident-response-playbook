@@ -429,7 +429,7 @@ links por varredura de todos os arquivos `.md` do repositório.
    empregados em `governanca/01-papeis-e-escalonamento.md` (Líder IR/Líder de Resposta, CISO/Segurança, SOC, TI,
    IAM, Encarregado, Jurídico, Controlador) e nos Instrumentos 1 e 2 (Responsável, Aprovação, Encarregado,
    representante autorizado do controlador) — não foram criados nomes de papel paralelos. O waypoint do Plano
-   (seção 3) usa os mesmos nomes de fase do Playbook (Prepare, Detect, Verify & Triage, Scope/Contain/
+   (seção 3) usa os mesmos nomes de fase do Playbook (Prepare, Detect, Verify and Triage, Scope/Contain/
    Eradicate/Recover, Debrief) e dos Instrumentos 1/3.
 3. **Ausência de dados do cenário fictício ou de aprovação simulada nos modelos limpos.** Busca por
    `INC-2026-001`, identificadores do cenário (`EVT-`, `AVR-0`, datas e números do caso fictício) e por valores
@@ -456,7 +456,7 @@ links por varredura de todos os arquivos `.md` do repositório.
    exercício operacional executado** (não houve simulação ao vivo, cronometragem nem tabletop com os novos
    documentos nesta rodada):
    - *Cenário original (INC-2026-001, acesso indevido + exfiltração via token):* mapeia diretamente à seção 3 do
-     Plano — Detect (E01) → Verify & Triage (E02, abertura de AVR-01) → Scope 1/Contain 1/Eradicate 1/Recover 1
+     Plano — Detect (E01) → Verify and Triage (E02, abertura de AVR-01) → Scope 1/Contain 1/Eradicate 1/Recover 1
      → reentrada por nova evidência (E04, 30.000 registros) → Scope 2/Contain 2/Eradicate 2/Recover 2. A trilha
      de privacidade (seção 4 do Plano) corresponde à reavaliação AVR-01→AVR-02 já registrada no Instrumento 2.
    - *Cenário 15.1, envio incorreto:* mapeia à seção 4, item 6–7 do Plano (preparação/envio/comprovação
@@ -489,3 +489,65 @@ links por varredura de todos os arquivos `.md` do repositório.
     campos de configuração vazios por desenho — este repositório não pode testá-los com dados reais de nenhuma
     organização; (c) a verificação automatizada de DOCX usou LibreOffice, não Microsoft Word — mantém-se a
     recomendação já registrada na seção 16 de confirmação em Word real antes do uso em produção.
+
+## 18. Validação desta rodada — Matriz de autoridade de decisão e ajustes de fidelidade ao DAIR
+
+Esta rodada decorre da avaliação completa de aderência ao DAIR e ao procedimento vigente da ANPD (seção 17
+cobriu a rodada anterior; esta cobre as melhorias então propostas e agora implementadas). Ferramentas e versões:
+as mesmas da seção 17 (Node.js + `docx`, `validate.py`, LibreOffice headless com `pdftoppm`/`pdfinfo`,
+`openpyxl` para varredura de conteúdo, `/mnt/skills/public/xlsx/scripts/recalc.py` para recálculo).
+
+1. **Matriz de autoridade de decisão adicionada ao Plano (nova seção 2.5) e referenciada pela Política (seções
+   5 e 6) e por `governanca/01-papeis-e-escalonamento.md`.** Reproduz o padrão do livro-fonte DAIR (seção "Document
+   Incident Response Decision Authority"): 8 decisões (declarar incidente, conter com impacto relevante, expandir
+   escopo, sair do Loop de Ações de Resposta, aceitar risco residual, autorizar comunicação à ANPD, autorizar
+   comunicação aos titulares, declarar encerramento do acompanhamento regulatório), cada uma com colunas Decisão |
+   Autoridade | Delegado | Documentação exigida. Texto explicita a distinção frente à matriz RACI já existente
+   (RACI cobre participação/coordenação; a matriz de autoridade cobre o direito de decidir) — nenhuma das duas
+   substitui a outra. Mantida como modelo limpo, sem nomes próprios ou titulares reais (apenas papéis).
+2. **Coluna "Informados (I)" completada em `governanca/01-papeis-e-escalonamento.md`.** A tabela de
+   responsabilidades, que já tinha R/A/C, ganhou a quarta coluna do RACI para as 7 atividades existentes, com
+   legenda atualizada (R/A/C/I) e cross-reference à nova matriz de autoridade do Plano.
+3. **Terceira categoria de causa — "ambiental" — adicionada ao lado de maliciosa/acidental.** Corrigido na
+   abrangência do Plano (seção 3, Markdown e DOCX) e no Instrumento 3 (linha "Verify and Triage"/"Confirmar a
+   natureza do incidente", descrição e evidência esperada), alinhando com o livro-fonte, que trata as três causas
+   como igualmente cobertas pelos waypoints e pelo loop, apesar do foco predominante do livro em incidentes
+   maliciosos.
+4. **Debrief com os dois objetivos nomeados pelo DAIR — Incident Closure e Organizational Learning.** Seção 6.4
+   do Plano reescrita (Markdown e DOCX) distinguindo os dois objetivos explicitamente, com novo item de bullet
+   sobre avaliação/decisão de retenção, modificação ou descomissionamento de cada ativo temporário criado durante
+   a resposta (isolamento de sistemas, imagens forenses, contas temporárias, monitoramento reforçado) — elemento
+   do Incident Closure ausente na redação anterior.
+5. **Padronização ortográfica "Verify and Triage" (grafia canônica do livro-fonte, sem "&").** Corrigida em ~10
+   arquivos Markdown (`guias/04-utilizar-instrumentos.md`, `guias/01-aprender.md`,
+   `validacao/relatorio-validacao-v0.3.md`, `validacao/matriz-achados-A01-A18.md`,
+   `cenario/02-linha-do-tempo-e-decisoes.md`, `templates/04-checklist-operacional.md`,
+   `playbook/01-procedimento-operacional.md`, `governanca/plano-resposta-incidentes.md`), em 2 scripts geradores
+   de planilha (`instrumento1.py`/`exemplo1.py`, via `common.py` compartilhado; `instrumento3.py`) e em 2
+   geradores de Word (`instrumento4.js`, `plano.js`). Confirmado por varredura de conteúdo via `openpyxl` nos
+   quatro arquivos `.xlsx` reconstruídos (Registro + EXEMPLO, Checklist + EXEMPLO): 0 ocorrências remanescentes
+   da grafia antiga em cada um.
+6. **Recálculo de fórmulas sem regressão.** `recalc.py` nos quatro arquivos `.xlsx` afetados: Registro — 12
+   fórmulas recalculadas, 0 erros (igual à linha de base pré-mudança, confirmando que a correção textual não
+   afetou fórmulas); Checklist — 0 fórmulas (esperado, planilha não tem fórmulas), 0 erros. Mesmo resultado nas
+   cópias EXEMPLO correspondentes.
+7. **Validação de schema e inspeção visual dos três DOCX afetados.** `validate.py` aprovado para os três:
+   Política (143 parágrafos), Plano (322 parágrafos, incluindo a nova tabela de 4 colunas e 8 linhas da matriz de
+   autoridade), Relatório de Resposta ao Incidente (329 parágrafos — reconstruído apenas para herdar a correção
+   ortográfica no resumo de waypoints do Anexo, conteúdo normativo inalterado). Conversão para PDF e inspeção
+   visual: Política (6 páginas, páginas 3–4 inspecionadas), Plano (8 páginas, páginas 4, 6 e 8 inspecionadas,
+   incluindo a tabela da nova matriz de autoridade — larguras de coluna [2600, 2200, 1600, 2600] renderizam sem
+   quebra de palavra em nenhuma célula), Relatório (8 páginas, páginas 1 e 4 inspecionadas, incluindo a linha
+   "Verify and Triage" na tabela de metodologia DAIR aplicada — sem quebra de texto).
+8. **Verificação de links e de ausência de dados do cenário fictício.** Varredura automatizada de todos os links
+   relativos em arquivos `.md` do repositório: 100 links verificados, 0 quebrados (uma ocorrência de `](...)` é
+   texto literal descrevendo o próprio regex de varredura nesta seção, não um link real). Nenhuma das edições
+   desta rodada introduziu identificadores do cenário fictício (`INC-2026-001`, `EVT-`, `AVR-0`) ou valores de
+   aprovação preenchidos nos modelos limpos — as mudanças foram puramente textuais (nova seção, nova coluna, troca
+   de grafia, nova frase de abrangência).
+9. **Limitações desta rodada.** (a) A matriz de autoridade é um ponto de partida com papéis genéricos — a
+   organização deve nomear titulares e delegados reais no Plano, seção 1.3, e pode precisar adaptar as 8 decisões
+   listadas à sua própria estrutura de governança; (b) como nas rodadas anteriores, a verificação de DOCX usou
+   LibreOffice, não Microsoft Word — recomenda-se confirmação em Word real antes do uso em produção (seção 16);
+   (c) nenhum exercício tabletop foi executado para validar a matriz de autoridade na prática — a organização deve
+   testá-la junto com o Plano (Jornada 3).

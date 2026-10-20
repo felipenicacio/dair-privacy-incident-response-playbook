@@ -5,7 +5,7 @@ Horários de Brasília (UTC−03:00). **Nenhuma comunicação foi realmente envi
 | Data/hora | Evento / waypoint | Decisão |
 |---|---|---|
 | 19/10 09h10 | Detect: login suspeito E01 | Abrir INC-2026-001 e preservar logs |
-| 19/10 09h25 | Verify & Triage: E02 confirma acesso a dados pessoais | Escalar ao encarregado e Jurídico; marcar conhecimento do controlador |
+| 19/10 09h25 | Verify and Triage: E02 confirma acesso a dados pessoais | Escalar ao encarregado e Jurídico; marcar conhecimento do controlador |
 | 19/10 09h35 | Contain 1: conta bloqueada E03 | Verificar sessões e tokens, pendência ainda aberta |
 | 19/10 10h00 | Recover 1: serviço restrito restabelecido | Manter monitoramento, sem encerrar investigação |
 | 19/10 10h42 | Detect/Scope 2: exportação E04 | Reabrir Scope e Contain |

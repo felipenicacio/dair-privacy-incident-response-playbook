@@ -100,7 +100,10 @@ de reentrada estão detalhados no Plano de Resposta a Incidentes e no Playbook D
 
 A organização deve nomear, para cada papel acima, o(s) titular(es) e seus substitutos no Plano de Resposta a
 Incidentes (que detalha contatos, canais e critérios de acionamento), mantendo esta Política livre de dados
-pessoais ou nominais específicos.
+pessoais ou nominais específicos. A tabela acima estabelece responsabilidades em termos gerais; a organização
+deve detalhá-las em uma matriz RACI (Responsável, Aprovador, Consultado, Informado — ver
+[`governanca/01-papeis-e-escalonamento.md`](01-papeis-e-escalonamento.md) para um exemplo) por atividade de
+resposta, revisada e validada em exercício tabletop.
 
 ## 6. Autoridade de resposta
 
@@ -115,7 +118,9 @@ O Líder de Resposta a Incidentes, ou quem o substitua conforme definido no Plan
 
 Decisões que envolvam risco relevante à continuidade do negócio, exposição reputacional significativa ou
 compromisso de recursos extraordinários requerem ciência ou aprovação da Direção, conforme os limites que a
-organização definir no Plano.
+organização definir no Plano. O Plano detalha esta autoridade em uma matriz decisão a decisão (quem decide, quem
+substitui, qual evidência a decisão deve deixar — ver Plano, seção 2.5), que complementa, sem substituir, a
+matriz RACI da seção 5: RACI cobre participação e coordenação; a matriz de autoridade cobre o direito de decidir.
 
 ## 7. Obrigação interna de reportar
 

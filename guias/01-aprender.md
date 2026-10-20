@@ -7,7 +7,7 @@
 ## Percurso
 
 1. Leia o [cenário](../cenario/01-cenario-e-premissas.md). Diferencie fatos confirmados, hipóteses e lacunas.
-2. Consulte o [procedimento DAIR](../playbook/01-procedimento-operacional.md), observando Detect, Verify & Triage e as duas passagens pelo Response Actions Loop.
+2. Consulte o [procedimento DAIR](../playbook/01-procedimento-operacional.md), observando Detect, Verify and Triage e as duas passagens pelo Response Actions Loop.
 3. Antes de ver o resultado, responda: o bloqueio de uma conta revoga todas as formas de acesso? Que evidência confirmaria isso?
 4. Examine a [linha do tempo](../cenario/02-linha-do-tempo-e-decisoes.md). Compare a situação às 09h35 com a descoberta das 10h42.
 5. Analise as versões da [avaliação de risco aos titulares](../templates/01-avaliacao-risco-titulares.md). Separe risco técnico de análise de comunicação regulatória.

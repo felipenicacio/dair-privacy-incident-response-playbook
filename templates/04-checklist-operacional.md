@@ -7,7 +7,7 @@ Estados referem-se apenas ao **exercício fictício**.
 - [x] Identificar fontes de log e funções do CRM.
 - [ ] Automatizar revogação de tokens — falha deliberada do cenário.
 
-## Detect / Verify & Triage
+## Detect / Verify and Triage
 - [x] Preservar alerta original e horários.
 - [x] Confirmar acesso não autorizado.
 - [x] Identificar dados pessoais afetados e marco de conhecimento.

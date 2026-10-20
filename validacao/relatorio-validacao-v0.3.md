@@ -42,15 +42,32 @@ depende da posição da linha nem de uma fórmula de ID.
 abas Caracterizacao/Avaliacao_Regulatoria/Decisao_Comunicacao, mas como `AVR-01` na aba Historico — porque o ID
 era calculado pela posição da linha em cada aba, de forma independente.
 
-**Correção:** o ID (`AVR-NN`) agora é digitado manualmente e é ele — não a linha — que liga o registro entre as
-quatro abas. Uma formatação condicional compara a coluna "Versão" com os dois últimos dígitos da ID e sinaliza em
-vermelho qualquer divergência (ex.: ID `AVR-02` com Versão diferente de `2`).
+**Correção (e uma correção dentro da correção):** o ID (`AVR-NN`) agora é digitado manualmente e é ele — não a
+linha — que liga o registro entre as quatro abas. A primeira versão desta correção usou uma formatação
+condicional que comparava a coluna "Versão" com os dois últimos dígitos da própria ID (ex.: ID `AVR-02` deveria
+ter Versão `2`) — um mecanismo frágil e artificial: ele força o número da versão a estar embutido no texto da
+ID, o que não prova reconciliação alguma entre abas (duas abas podem ter a mesma ID com dígitos "corretos" e,
+ainda assim, dados de versões diferentes uma da outra) e quebraria em casos legítimos em que a numeração da ID
+não seguisse estritamente a sequência de versões. **Corrigido nesta revisão:** a formatação condicional agora
+testa, por fórmula, se a MESMA combinação ID+Versão desta linha também existe nas outras abas relacionadas
+(`COUNTIFS` cruzado entre abas, não extração de dígitos da ID) — por exemplo, em Caracterizacao:
+`COUNTIFS(Avaliacao_Regulatoria!$A$4:$A$53,$A4,Avaliacao_Regulatoria!$B$4:$B$53,$B4)=0` sinaliza em vermelho se
+aquele par ID+Versão não existir em Avaliacao_Regulatoria. Esse é o teste de reconciliação que o achado A03
+realmente pede ("relacionar de forma inequívoca incidente/avaliação/versão... sem depender de alinhamento pela
+mesma linha").
 
 **Teste executado:** reconstruído o conjunto demonstrativo com `AVR-01` (v1, informações insuficientes) e
 `AVR-02` (v2, condições potencialmente atendidas) consistentes nas quatro abas, incluindo a linha de Historico
 que agora traz `AVR-02` (não mais `AVR-01`) como ID de chegada. Recálculo: 0 erros. Inspeção de valores: a
 fórmula de Condição B (coluna calculada a partir dos incisos I–VI) retornou `"Em apuração"` para AVR-01 e
-`"Sim"` para AVR-02, consistente com a fundamentação textual registrada.
+`"Sim"` para AVR-02, consistente com a fundamentação textual registrada. **Teste de regressão (simulando
+novamente o bug original encontrado pela auditoria):** em uma cópia do conjunto demonstrativo, a ID da linha de
+Historico foi deliberadamente revertida de `AVR-02` para `AVR-01` (reintroduzindo exatamente a divergência
+original), mantendo a Versão = 2. Simulação programática da fórmula de reconciliação confirmou que a nova regra
+identifica corretamente a inconsistência (`('AVR-01', '2')` não encontrado nas três abas restantes), enquanto o
+mesmo teste sobre os dados consistentes (sem a reversão) não aponta nenhuma inconsistência — confirmando que a
+regra funciona nos dois sentidos (não falsos positivos sobre dados corretos, não falsos negativos sobre o bug
+original).
 
 ## 5. Correção A04 — Reconciliação de efetividade, evidência e encerramento
 
@@ -152,16 +169,23 @@ indicadores calculados — por desenho, não por omissão.
 Todos os seis arquivos abrem sem mensagem de corrupção no LibreOffice (motor de verificação disponível nesta
 sessão). **Não foi possível testar a abertura no Microsoft Excel real** — ver Limitações.
 
-### 10.1 — Investigação específica de `Painel!B9` (achado A16)
+### 10.1 — Investigação específica de `Painel!B10` (achado A16)
+
+**Correção de referência nesta revisão do relatório:** uma versão anterior deste relatório (e o exercício da
+seção 15) referia-se a esta célula como `Painel!B9`. B9 é "Eventos registrados na linha do tempo" — um
+indicador diferente, não afetado pelo achado da auditoria. A célula correta, confirmada por leitura direta do
+arquivo publicado (`A10` = "Ciclos DAIR distintos identificados (CIC-01 a CIC-30)"), é **`Painel!B10`**. Todas
+as referências foram corrigidas nesta revisão, incluindo o exercício de alteração indevida da seção 15.
 
 A auditoria identificou divergência entre o valor salvo e o motor de recálculo independente na fórmula antiga de
-"Ciclos DAIR distintos identificados", que usava `SUMPRODUCT((intervalo<>"")/COUNTIF(intervalo,intervalo&""))`.
+"Ciclos DAIR distintos identificados" (`Painel!B10`), que usava `SUMPRODUCT((intervalo<>"")/COUNTIF(intervalo,intervalo&""))`.
 Esse padrão é sensível a como cada motor trata células vazias no critério `""` do `COUNTIF` — uma causa plausível
 e tecnicamente coerente da divergência relatada, mas não confirmada contra o Microsoft Excel real nesta sessão
 (apenas o LibreOffice estava disponível). Em vez de presumir qual motor está "certo", a fórmula foi substituída
 por uma contagem por correspondência exata de padrão (`"CIC-"&TEXT(n,"00")`), sem divisão nem dependência de como
 cada motor conta strings vazias. **Teste executado:** no conjunto demonstrativo (2 ciclos reais, CIC-01 e
-CIC-02), a nova fórmula retornou exatamente `2`, valor correto e verificável manualmente.
+CIC-02), a nova fórmula retornou exatamente `2`, valor correto e verificável manualmente (confirmado por leitura
+direta do valor calculado em `Painel!B10` com `data_only=True`, não apenas pela ausência de erro no recálculo).
 
 ### 10.2 — Testes de expansão (achado A10)
 
@@ -184,21 +208,31 @@ páginas renderizadas.
 | Arquivo | Validação de esquema | Páginas (PDF) | Inspeção visual |
 |---|---|---|---|
 | DAIR_Relatorio_Resposta_Incidente_v0.3.docx | Aprovada (329 parágrafos) | 8 | Capa, sumário e seções 1–20 inspecionadas; seção 13 corrigida (inciso correto) |
-| DAIR_Modelos_Comunicacao_ANPD_Titulares_v0.3.docx | Aprovada (160 parágrafos) | 4 (antes: 5) | Todas as páginas inspecionadas em duas rodadas (antes e depois da correção de cabeçalho da Parte C) |
+| DAIR_Modelos_Comunicacao_ANPD_Titulares_v0.3.docx | Aprovada (195 parágrafos) | 6 (passou por 5, 4 e 5 em iterações intermediárias — ver histórico abaixo) | Todas as páginas inspecionadas em quatro rodadas, incluindo duas com conteúdo realista preenchido (não apenas células vazias) |
 
-**Falha encontrada e corrigida nesta correção (1ª iteração):** a tabela da Parte C (Instrumento 5), ao ser
-ampliada para 10 colunas (A07), foi definida inicialmente com larguras somando mais que a largura útil da
-página, causando quebra de palavra em cada caractere nos cabeçalhos. Corrigida a soma das larguras para
-exatamente a largura útil (9000 DXA).
+A Parte C (Instrumento 5) passou por três rodadas de correção, cada uma revelando um problema que a anterior não
+cobria — documentadas aqui para que o histórico fique rastreável:
 
-**Falha encontrada e corrigida nesta correção (2ª iteração — inspeção completa de página):** mesmo após o
-ajuste de largura total, a inspeção visual página a página (seção 11 completa, abaixo) revelou que cabeçalhos
-longos em colunas estreitas (ex.: "Processo/Protocolo (SEI ou outro)", "Responsável") ainda quebravam
-caractere a caractere, por excederem a largura da coluna sem um ponto de quebra natural. Corrigido reduzindo o
-tamanho da fonte dos cabeçalhos desta tabela (de 10pt para 7pt) e abreviando os rótulos mais longos ("Processo/
-Protocolo (SEI ou outro)" → "Protocolo (SEI/ outro)"; "Conteúdo/Versão Enviada" → "Conteúdo/ Versão"; "Data de
-Envio/Juntada" → "Data de Envio"; "Evidência Comprobatória" → "Evidência"), com uma nota de rodapé explicando as
-abreviações. Nova inspeção visual confirmou cabeçalhos legíveis, sem quebra de caractere.
+**1ª iteração:** a tabela, ao ser ampliada para 10 colunas (A07), foi definida inicialmente com larguras
+somando mais que a largura útil da página (11800 DXA contra 9000 DXA), causando quebra de palavra em cada
+caractere nos cabeçalhos. Corrigida a soma das larguras para exatamente a largura útil.
+
+**2ª iteração:** mesmo com a largura total corrigida, a inspeção visual página a página revelou que cabeçalhos
+longos em colunas estreitas (ex.: "Processo/Protocolo (SEI ou outro)", "Responsável") ainda quebravam caractere
+a caractere, por excederem a largura da coluna sem um ponto de quebra natural. Corrigida reduzindo o tamanho da
+fonte dos cabeçalhos desta tabela (de 10pt para 7pt) e abreviando os rótulos mais longos.
+
+**3ª iteração (achado durante os exercícios de cenário da seção 15, não durante a inspeção com células vazias):**
+ao preencher a tabela com conteúdo realista (exercício 15.1 — "Encarregado", "Formulário eletrônico SEI/ANPD"
+etc.), as células de CONTEÚDO (não apenas os cabeçalhos) voltaram a quebrar caractere a caractere — o problema
+nunca tinha aparecido porque as inspeções anteriores usaram a tabela vazia. Reduzir a fonte do cabeçalho não
+resolve o corpo da tabela, e aumentar a fonte do corpo pioraria a quebra. **Correção estrutural:** a tabela
+única de 10 colunas foi substituída por cinco blocos verticais (rótulo | valor), um por registro de
+comunicação, com a coluna de valor em largura plena (6400 DXA de 9000). Testado `layout: TableLayoutType.FIXED`
+antes dessa mudança — não resolveu a quebra por si só, confirmando que o problema era de espaço disponível, não
+de modo de cálculo de layout da tabela. Reconstrução e nova inspeção visual com o mesmo conteúdo do exercício
+15.1 confirmaram texto legível, sem quebra de caractere, em nenhuma célula. Efeito colateral aceito: o documento
+cresceu de 4 para 6 páginas.
 
 **Dados fictícios misturados a modelos reutilizáveis:** confirmado que não há — os Instrumentos 4 e 5 contêm
 apenas rótulos de campo e instruções de preenchimento em itálico, sem nenhum dado do incidente fictício
@@ -244,35 +278,99 @@ referências complementares.
 
 ## 15. Exercícios adicionais — envio incorreto, alteração indevida e indisponibilidade sem exfiltração
 
-Executados em cópias de verificação dos arquivos publicados (não incorporados ao repositório), para comprovar o
-comportamento dos controles sem alterar os arquivos entregues.
+**Nota sobre uma revisão anterior deste relatório:** a primeira versão desta seção testou estes três exercícios
+apenas como manipulações técnicas da planilha (duplicar um ID, sobrescrever uma fórmula) — o que comprova
+controles de integridade de arquivo, mas não testa os três cenários que a tarefa pede, que são tipos de
+**incidente envolvendo dados pessoais** (um envio incorreto de comunicação regulatória, uma alteração indevida
+de dados pessoais, uma indisponibilidade sem exfiltração confirmada). Os três exercícios foram refeitos como
+cenários fictícios completos, abaixo. O exercício técnico de sobrescrita de fórmula foi mantido — é uma
+evidência legítima sobre um limite técnico diferente (A11) — mas estava testando a célula errada (ver 15.4).
 
-**Envio incorreto (duplicidade de identificador):** em uma cópia do conjunto demonstrativo do Instrumento 1,
-o identificador já existente `EVT-001` foi gravado deliberadamente em uma segunda linha (linha 25), simulando um
-operador digitando um ID já usado. Resultado: a validação de dados (`showErrorMessage=True, errorStyle="stop"`)
-e a formatação condicional cobrem exatamente a célula alterada (`A4:A503`); uma simulação programática do mesmo
-critério usado pela fórmula de validação (`COUNTIF`) confirmou a duplicidade (`EVT-001` → 2 ocorrências), ou
-seja, o controle teria bloqueado a gravação em uso interativo real (Excel/LibreOffice Calc) e sinalizaria em
-vermelho qualquer duplicidade que já exista no arquivo.
+Todos os exercícios abaixo foram executados em cópias de verificação dos arquivos publicados (não incorporados
+ao repositório), para comprovar o comportamento dos instrumentos e dos controles sem alterar os arquivos
+entregues nem o conjunto demonstrativo oficial (INC-2026-001).
 
-**Alteração indevida (sobrescrita de fórmula):** em uma cópia do modelo em branco do Instrumento 1, a fórmula de
-`Painel!B9` (`=COUNTIF(Linha_do_Tempo!C4:C503,"<>")`) foi deliberadamente substituída por um valor fixo
-incorreto (`999`), simulando alguém sobrescrevendo uma célula calculada. Resultado: o recálculo automatizado
-(`recalc.py`) reportou sucesso e zero erros — uma sobrescrita de fórmula por um valor estático não gera, por si
-só, um erro de fórmula detectável por ferramentas automatizadas. Esse é um limite técnico real documentado nesta
-correção (consistente com a nota de A11 de que o sombreamento de células é controle de usabilidade, não de
-segurança): a proteção contra alteração indevida depende de controles organizacionais (controle de versão,
-permissões de edição na camada de distribuição/armazenamento do arquivo), não de um mecanismo interno da
-planilha. Recomenda-se tratar os modelos em branco como somente leitura para a maioria dos usuários e distribuir
-cópias de trabalho versionadas.
+### 15.1 — Envio incorreto (comunicação enviada à ANPD com erro, corrigida por complementação)
 
-**Indisponibilidade sem exfiltração:** confirmado por revisão de conteúdo (não requer alteração de arquivo) que
-o catálogo do Instrumento 3 (atividades de Verify & Triage, linha "Confirmar a natureza do incidente") já não
-pressupõe confidencialidade comprometida nem exportação de dados — o texto cobre explicitamente incidentes de
-"confidencialidade, integridade, disponibilidade ou autenticidade... mesmo sem atacante identificado", e a
-atividade de detecção aceita indício "de qualquer origem (ferramenta, pessoa ou fornecedor)". Um cenário de
-indisponibilidade pura (ex.: ransomware sem exfiltração confirmada) é, portanto, registrável no instrumento sem
-adaptação adicional.
+Cenário: a comunicação inicial à ANPD (Instrumento 5, Parte C) é enviada informando **300** titulares afetados;
+o erro é percebido depois do envio (o número correto é 30.000) e corrigido por complementação, dentro do prazo
+do art. 6º, §3º (20 dias úteis da comunicação efetivamente realizada).
+
+Em uma cópia do Instrumento 5, preenchidos os dois primeiros blocos da Parte C:
+- **Comunicação inicial à ANPD** — Conteúdo/Versão: "v1 — comunicação inicial (art. 6º, §2º)"; Data de
+  Envio/Juntada: 19/10/2026; Situação: "Enviado (erro identificado após o envio — ver Complementação 1)".
+- **Complementação 1 à ANPD** — Conteúdo/Versão: "v2 — correção do quantitativo de titulares (de 300 para
+  30.000) e atualização das medidas mitigatórias"; Prazo Aplicável: "Até 20 dias úteis da comunicação inicial
+  (16/11/2026)"; Data de Envio/Juntada: 21/10/2026; Situação: "Enviado".
+
+**Resultado:** o kit registra o envio incorreto e a correção como dois registros distintos e rastreáveis — a
+comunicação original não é apagada nem sobrescrita, preservando o histórico de que houve um erro e de que foi
+corrigido dentro do prazo de complementação. `validate.py` aprovado; inspeção visual confirmou que os dois
+registros aparecem completos e legíveis, sem corte de texto (ver achado adicional de legibilidade em 15.5).
+
+### 15.2 — Alteração indevida (incidente de integridade envolvendo dados pessoais, sem exportação)
+
+Cenário: 42 registros cadastrais de titulares (endereço de entrega e dados bancários de reembolso) são alterados
+sem autorização no CRM, identificado por auditoria de integridade — sem evidência de exportação ou acesso
+externo associado.
+
+Em cópias dos Instrumentos 1, 2 e 3: Cadastro_Incidente preenchido com a descrição do cenário (natureza:
+comprometimento de integridade, não confidencialidade); Checklist, atividade "Confirmar a natureza do
+incidente", Resultado Observado = "Comprometimento de integridade confirmado: 42 registros cadastrais alterados
+sem autorização. Sem evidência de exfiltração associada — confirmação não depende de exportação de dados.";
+Avaliação Regulatória (Instrumento 2), inciso III (dados financeiros) marcado "Sim", fundamentado por "a
+alteração compromete a confiabilidade dos dados usados para reembolso, podendo gerar prejuízo financeiro direto
+ao titular — independentemente de exportação".
+
+**Resultado:** os três instrumentos registraram o cenário sem exigir adaptação estrutural — não há campo que
+condicione o registro de um incidente à existência de exportação ou de comprometimento de confidencialidade.
+Recálculo dos três arquivos: 0 erros. A Condição B (Instrumento 2) calculou corretamente `"Sim"` a partir do
+inciso III, demonstrando que a fundamentação de risco não depende de exfiltração confirmada.
+
+### 15.3 — Indisponibilidade sem exfiltração (ransomware, exfiltração não confirmada)
+
+Cenário: indisponibilidade do CRM por 14 horas por ransomware em servidor de aplicação; backups preservados e
+restaurados; investigação de exfiltração em andamento, sem evidência de exportação até o momento. Detecção
+reportada por um fornecedor de SOC terceirizado, sem acionamento de ferramenta de monitoramento interna.
+
+Preenchimento análogo ao cenário 15.2: Cadastro_Incidente com a descrição acima (quantidade de titulares:
+"Desconhecido", já que a exfiltração não está confirmada); Checklist, Resultado Observado = "Comprometimento de
+disponibilidade confirmado (ransomware). Detecção reportada pelo SOC terceirizado, sem acionamento de
+ferramenta de monitoramento interna. Exfiltração não confirmada — investigação em andamento; ausência de
+evidência de exportação não é tratada como prova de ausência de risco."; Avaliação Regulatória, incisos I/VI
+marcados "Em apuração" (não "Não"), com fundamentação de que o volume de titulares impactados pelo período de
+indisponibilidade ainda está sendo levantado.
+
+**Resultado:** recálculo dos três arquivos: 0 erros. A Condição B calculou `"Em apuração"` — nem "Sim" nem "Não"
+— refletindo corretamente que a avaliação está em curso e não foi encerrada pela ausência de confirmação de
+exfiltração (o que seria o erro apontado pelo achado A08). O catálogo do Instrumento 3 aceitou a detecção
+reportada por um fornecedor, sem exigir uma ferramenta de monitoramento interna (A15).
+
+### 15.4 — Alteração indevida de uma célula calculada (regressão técnica — correção de referência)
+
+Em uma cópia do modelo em branco do Instrumento 1, a fórmula de `Painel!B10` ("Ciclos DAIR distintos
+identificados" — a fórmula corrigida pelo achado A09/A16, não `Painel!B9` como uma versão anterior deste
+relatório indicava por engano) foi deliberadamente substituída por um valor fixo incorreto (`999`), simulando
+alguém sobrescrevendo uma célula calculada. Resultado: o recálculo automatizado (`recalc.py`) reportou sucesso e
+zero erros — uma sobrescrita de fórmula por um valor estático não gera, por si só, um erro de fórmula detectável
+por ferramentas automatizadas. Esse é um limite técnico real (consistente com a nota de A11 de que o
+sombreamento de células é controle de usabilidade, não de segurança): a proteção contra alteração indevida de
+uma célula calculada depende de controles organizacionais (controle de versão, permissões de edição na camada
+de distribuição/armazenamento do arquivo), não de um mecanismo interno da planilha. Recomenda-se tratar os
+modelos em branco como somente leitura para a maioria dos usuários e distribuir cópias de trabalho versionadas.
+
+### 15.5 — Achado adicional de legibilidade encontrado ao preencher os cenários acima (Instrumento 5, Parte C)
+
+Ao preencher o exercício 15.1 com conteúdo realista (nomes de papéis como "Encarregado", "Formulário eletrônico
+SEI/ANPD" etc.), a tabela de 10 colunas da Parte C — mesmo após a correção de largura e de fonte de cabeçalho
+relatada anteriormente nesta seção 11 — voltou a quebrar palavras caractere a caractere nas células de conteúdo,
+porque nenhuma coluna de valor tinha largura suficiente para uma palavra comum nesse tamanho de fonte. Isso só
+foi percebido ao testar com dados representativos, não com células vazias. **Correção:** a tabela única de 10
+colunas foi substituída por cinco blocos verticais (rótulo | valor), um por registro (comunicação inicial,
+complementação 1, complementação 2, comunicação aos titulares, declaração art. 9º §4º), cada um com a coluna de
+valor em largura plena (6400 DXA). Nova inspeção visual com o mesmo conteúdo do exercício 15.1 confirmou texto
+legível, sem quebra de caractere, em todas as linhas. O documento passou de 4 para 6 páginas como consequência
+do layout vertical — uma troca aceita em favor da legibilidade.
 
 ## 16. Pontos que exigem revisão humana
 

@@ -8,7 +8,7 @@
 O exercício aplica avaliação cumulativa:
 
 - **Condição A:** o incidente pode afetar significativamente interesses e direitos fundamentais dos titulares?
-- **Condição B:** envolve ao menos uma categoria prevista no art. 5º, II, do RCIS (p.ex., dados sensíveis, dados de crianças/adolescentes/idosos, dados financeiros, credenciais de autenticação, dados protegidos por sigilo legal/judicial/profissional ou tratamento em larga escala)?
+- **Condição B:** envolve, cumulativamente, ao menos uma categoria prevista nos incisos I a VI do art. 5º do RCIS — I. dados pessoais sensíveis; II. dados de crianças, adolescentes ou idosos; III. dados financeiros; IV. dados de autenticação; V. dados sob sigilo legal/judicial/profissional; VI. tratamento em larga escala?
 
 A resposta depende dos fatos e critérios da norma; **volume ou CPF isolado não determinam automaticamente comunicação**.
 
@@ -25,8 +25,8 @@ A resposta depende dos fatos e critérios da norma; **volume ou CPF isolado não
 - **Fatos confirmados:** exportação de 30.000 registros de pessoas distintas para fora do ambiente autorizado.
 - **Dados envolvidos:** nome, CPF, telefone, e-mail, endereço, valores e datas dos pedidos; não há evidência de cartões completos ou credenciais de clientes no arquivo.
 - **Condição A:** **sim**, potencial de fraude e engenharia social direcionada com dados verdadeiros de compra/identificação, com alcance material.
-- **Condição B:** **sim**, dados financeiros relacionados a pedidos e avaliação de tratamento em larga escala, sujeita à interpretação aplicável da norma.
-- **Medidas mitigadoras:** revogação de token, bloqueio de conta, revisão de acessos e monitoramento. Não removem dados já exportados.
+- **Condição B:** **sim** — fundamentada separadamente em dois incisos distintos do art. 5º: **III (dados financeiros)**, pela natureza dos dados de pedidos exportados (independente da quantidade); e **VI (larga escala)**, pela combinação de volume absoluto (30.000 titulares distintos), abrangência (toda a base de pedidos do período) e forma não segmentada da exportação — e não apenas pelo número isolado de titulares, que o RCIS não fixa como limiar automático.
+- **Medidas mitigadoras:** revogação de token (testada tecnicamente, não apenas presumida pelo log de execução), bloqueio de conta, revisão de acessos e monitoramento. Não removem dados já exportados.
 - **Incertezas:** circulação e uso dos dados após a exportação.
 - **Decisão simulada:** comunicar ANPD e titulares, observadas formalidades e prazos legais.
 

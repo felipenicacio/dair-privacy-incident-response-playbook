@@ -11,7 +11,7 @@
 | Titulares | 30.000 pessoas distintas (simulação) |
 | Ambientes | IdP, CRM SaaS, API |
 | Risco | Potencial de fraude; avaliação v2 atende condições cumulativas do RCIS |
-| Contenção | Conta bloqueada, token revogado, permissões revisadas |
+| Contenção | Conta bloqueada (09h35); teste técnico (09h40) revelou token de API ainda ativo — 1ª contenção inefetiva; token revogado no Ciclo 2 (11h05) e confirmado inválido por novo teste (11h10); permissões revisadas |
 | Comunicação | Planejada no tabletop, **não enviada** |
 | Risco residual | Redistribuição externa dos dados desconhecida |
 | Encerramento | Decisão D-04 em 20/10 às 14h; obrigações posteriores pendentes |

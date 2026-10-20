@@ -27,7 +27,7 @@ Cinco instrumentos em Excel e Word, independentes do cenário fictício, prontos
 | 2 | [Avaliação de Riscos aos Titulares e Decisão de Comunicação (ANPD)](instrumentos/excel/DAIR_Avaliacao_Riscos_Titulares_ANPD_v0.3.xlsx) | `.xlsx` |
 | 3 | [Checklist Operacional Dinâmico](instrumentos/excel/DAIR_Checklist_Operacional_v0.3.xlsx) | `.xlsx` |
 | 4 | [Relatório de Resposta ao Incidente](instrumentos/word/DAIR_Relatorio_Resposta_Incidente_v0.3.docx) | `.docx` |
-| 5 | [Kit de Comunicações Regulatórias e aos Titulares](instrumentos/word/DAIR_Modelos_Comunicacao_ANPD_Titulares_v0.3.docx) | `.docx` |
+| 5 | [Kit de Preparação e Controle das Comunicações ANPD/Titulares](instrumentos/word/DAIR_Kit_Preparacao_Comunicacoes_ANPD_Titulares_v0.3.docx) | `.docx` |
 
 Um [conjunto demonstrativo](instrumentos/exemplos/) preenchido com o cenário fictício INC-2026-001 acompanha os modelos, exclusivamente para fins de treinamento. Siga a [Jornada 4](guias/04-utilizar-instrumentos.md) para saber qual instrumento usar, quando e por quem. Ver também o [relatório de validação técnica da v0.3](validacao/relatorio-validacao-v0.3.md).
 

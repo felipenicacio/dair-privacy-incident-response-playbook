@@ -10,7 +10,7 @@ para o rastreamento achado a achado.
 
 - 3 planilhas Excel (modelos em branco): `DAIR_Registro_e_Gestao_de_Incidentes_v0.3.xlsx`, `DAIR_Avaliacao_Riscos_Titulares_ANPD_v0.3.xlsx`, `DAIR_Checklist_Operacional_v0.3.xlsx`.
 - 3 planilhas Excel (conjunto demonstrativo fictício): as mesmas três, com sufixo `_EXEMPLO-INC-2026-001`.
-- 2 documentos Word: `DAIR_Relatorio_Resposta_Incidente_v0.3.docx`, `DAIR_Modelos_Comunicacao_ANPD_Titulares_v0.3.docx`.
+- 2 documentos Word: `DAIR_Relatorio_Resposta_Incidente_v0.3.docx`, `DAIR_Kit_Preparacao_Comunicacoes_ANPD_Titulares_v0.3.docx`.
 - Todos os Markdown do repositório (playbook, cenário, governança, templates, guias, referências).
 
 ## 2. Motor e tipos de teste utilizados (distinção exigida pela auditoria)
@@ -125,12 +125,30 @@ explícita de ausência de data efetiva, já que, no exercício, nenhuma comunic
 ## 8. Correção A07 — Acompanhamento das comunicações
 
 **Mudança no Instrumento 5 (Parte C):** a tabela única "ANPD x Titulares" foi substituída por um controle que
-acompanha separadamente a comunicação inicial à ANPD, até duas complementações, a comunicação aos titulares e a
+acompanha separadamente a comunicação inicial à ANPD, as complementações, a comunicação aos titulares e a
 declaração do art. 9º, §4º — cada uma com processo/protocolo, conteúdo/versão enviada, responsável, aprovação,
 prazo aplicável, data de envio, meio utilizado, evidência comprobatória e situação. Acrescentada a seção C.1
 (classificação de acesso dos documentos anexados e conferência de representação) e C.2 (divulgação pública
 alternativa: justificativa, canais, datas e evidência de manutenção pelo período mínimo de 3 meses). O texto
 agora destaca explicitamente que o envio à ANPD não implica que os titulares também foram comunicados.
+
+**Correção adicional nesta rodada (adequação do Instrumento 5 à continuidade institucional — Política/Plano
+v0.3):** o Instrumento 5 foi retitulado para "Kit de Preparação e Controle das Comunicações ANPD/Titulares" e
+renomeado para `DAIR_Kit_Preparacao_Comunicacoes_ANPD_Titulares_v0.3.docx`, para deixar claro que o documento
+organiza informações e aprovações internas ANTES do preenchimento do formulário oficial do SEI!ANPD (que já
+oferece modalidades preliminar e completa no Documento Principal), e que não constitui protocolo nem substitui
+esse formulário. O limite de "até duas complementações" foi removido — era artificial: a ANPD não fixa um
+número máximo de complementações, apenas o prazo de 20 dias úteis do art. 6º, §3º. A Parte C agora traz um único
+bloco "Complementação à ANPD — registro nº 1", com instrução explícita para duplicá-lo sem limite, e um novo
+bloco "Outras providências ou requisições relacionadas ao processo", também duplicável, para registrar pedidos
+de informação adicional (art. 8º do RCIS) ou determinações da ANPD no mesmo processo. A classificação de acesso
+e a conferência de representação (antiga seção C.1) foram deslocadas para a Parte A (seção A.3), por serem parte
+da preparação de documentos a anexar, e não da execução; a preparação da divulgação pública alternativa (antiga
+seção C.2, parte justificativa/canais/prazo) foi deslocada para a Parte B (seção B.3), mantendo-se em C apenas o
+controle da sua execução (data de início, cumprimento do período mínimo, evidência de manutenção). Validado por
+`validate.py` (OOXML aprovado) e por conversão a PDF com inspeção visual de todas as páginas, incluindo uma
+rodada com todas as tabelas preenchidas com conteúdo realista de teste para confirmar ausência de quebra de
+texto caractere a caractere nos novos blocos (A.3 e nos registros adicionais de C) — ver seção 11.
 
 **Teste executado:** conversão para PDF e inspeção visual de todas as páginas (ver seção 10) — tabela renderiza
 sem cortes após ajuste de largura de colunas (ver achado de teste registrado abaixo).
@@ -208,7 +226,7 @@ páginas renderizadas.
 | Arquivo | Validação de esquema | Páginas (PDF) | Inspeção visual |
 |---|---|---|---|
 | DAIR_Relatorio_Resposta_Incidente_v0.3.docx | Aprovada (329 parágrafos) | 8 | Capa, sumário e seções 1–20 inspecionadas; seção 13 corrigida (inciso correto) |
-| DAIR_Modelos_Comunicacao_ANPD_Titulares_v0.3.docx | Aprovada (195 parágrafos) | 6 (passou por 5, 4 e 5 em iterações intermediárias — ver histórico abaixo) | Todas as páginas inspecionadas em quatro rodadas, incluindo duas com conteúdo realista preenchido (não apenas células vazias) |
+| DAIR_Kit_Preparacao_Comunicacoes_ANPD_Titulares_v0.3.docx | Aprovada (229 parágrafos, após retitulação e reescrita das Partes A/B/C nesta rodada) | 7 vazio / 10 com todas as tabelas preenchidas com conteúdo realista de teste | Todas as páginas inspecionadas em cinco rodadas ao todo (quatro da correção A07 original, mais uma desta rodada com o documento retitulado e as seções A.2/A.3/B.3 novas e os registros de C sem limite de complementação, novamente com conteúdo realista preenchido) — sem quebra de texto caractere a caractere em nenhum bloco |
 
 A Parte C (Instrumento 5) passou por três rodadas de correção, cada uma revelando um problema que a anterior não
 cobria — documentadas aqui para que o histórico fique rastreável:

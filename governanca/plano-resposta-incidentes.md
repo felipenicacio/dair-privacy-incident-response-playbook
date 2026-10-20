@@ -133,6 +133,27 @@ um incidente tecnicamente contido pode ainda exigir comunicação regulatória, 
 pode já ter avaliação regulatória concluída com risco não significativo. Nenhuma das duas decide a outra
 automaticamente.
 
+### 2.5 Matriz de autoridade de decisão
+
+A tabela da seção 2.2 orienta o escalonamento por severidade; esta matriz complementa a Política (seção 6)
+nomeando, decisão a decisão, quem decide, quem substitui e qual evidência a decisão deve deixar — o mesmo papel
+que uma matriz RACI (ver Política, seção 5, e [`governanca/01-papeis-e-escalonamento.md`](01-papeis-e-escalonamento.md))
+cumpre para a participação, mas aqui para a autoridade de decidir.
+
+| Decisão | Autoridade | Delegado | Documentação exigida |
+|---|---|---|---|
+| Declarar o incidente | Líder de Resposta a Incidentes | Analista sênior de plantão | Registro de abertura no Instrumento 1, com data/hora e fundamento |
+| Conter com impacto relevante ao negócio | Líder de Resposta + concordância do dono da área de negócio | Direção, se o Líder de Resposta estiver indisponível | Registro de decisão de contenção no Instrumento 1, com avaliação de impacto |
+| Expandir o escopo da investigação | Líder de Resposta, com ciência da Direção | — | Registro de expansão de escopo no Instrumento 1, com o gatilho que a motivou |
+| Sair do Loop de Ações de Resposta (encerramento técnico) | Líder de Resposta, com base em validação técnica | Direção, mediante aprovação registrada do Líder de Resposta | Decisão de encerramento assinada (seção 6.1) |
+| Aceitar risco residual | Direção | — | Registro de aceite de risco, com responsável e prazo de acompanhamento |
+| Autorizar o envio da comunicação à ANPD | Representante legalmente constituído do controlador | — | Aprovação registrada no Instrumento 5, Parte A/C, antes do peticionamento |
+| Autorizar o envio da comunicação aos titulares | Representante autorizado do controlador | — | Aprovação registrada no Instrumento 5, Parte B/C, antes do envio |
+| Declarar o encerramento do acompanhamento regulatório | Encarregado, com ciência do Jurídico | — | Registro de encerramento no Instrumento 5, Parte C |
+
+Esta matriz é um ponto de partida; a organização deve adaptar autoridades e delegados aos seus próprios cargos e
+substituir os nomes de papel pelos titulares reais na seção 1.3 — nunca aqui, que permanece o modelo limpo.
+
 ## 3. Execução segundo o DAIR
 
 A execução técnica segue o DAIR como abordagem dinâmica e iterativa (Política, seção 4), sem sequência rígida —
@@ -147,7 +168,7 @@ exfiltração de dados.
 |---|---|---|---|---|---|---|
 | Prepare | Estabelecer capacidade de resposta | Contínuo (não é reativo a um incidente específico) | Líder de Resposta / Segurança | Designação de papéis, inventário de capacidades | Instrumento 3 (checklist) | Lista de papéis, canais e ferramentas validada |
 | Detect | Identificar evento com indícios de incidente | Alerta de monitoramento, relato humano, notificação de terceiro/operador | Segurança / TI / qualquer colaborador | Abrir registro; decidir se há indício suficiente para triagem | Instrumento 1 (evento) | Alerta bruto preservado, com data/hora e fonte |
-| Verify & Triage | Confirmar natureza, extensão inicial e se há dados pessoais envolvidos | Evidência inicial do Detect | Líder de Resposta + Segurança + Encarregado | Declarar incidente; fixar marco de conhecimento; classificação inicial (seção 2) | Instrumento 1 (decisão), Instrumento 2 (abertura, se dados pessoais) | Evidência de confirmação, marco de conhecimento fundamentado |
+| Verify and Triage | Confirmar natureza, extensão inicial e se há dados pessoais envolvidos | Evidência inicial do Detect | Líder de Resposta + Segurança + Encarregado | Declarar incidente; fixar marco de conhecimento; classificação inicial (seção 2) | Instrumento 1 (decisão), Instrumento 2 (abertura, se dados pessoais) | Evidência de confirmação, marco de conhecimento fundamentado |
 | Scope (loop) | Delimitar o que é e o que não é afetado | Nova evidência, suspeita de escopo maior | Segurança / TI / Negócio | O que tratar como conhecido vs. desconhecido | Instrumento 1, Instrumento 3 | Lista de ativos, contas, dados e sistemas delimitados, com incertezas registradas |
 | Contain (loop) | Interromper a progressão do incidente | Escopo delimitado ou contenção anterior malsucedida | Segurança / TI | Quais acessos/contas/sistemas conter; proporcionalidade frente à continuidade | Instrumento 1, Instrumento 3 | Evidência de bloqueio/revogação e de sua validação técnica |
 | Eradicate (loop) | Remover a causa e o mecanismo de acesso | Contenção validada | Segurança / TI | Causa suficientemente identificada para erradicar, ou apenas mitigada | Instrumento 1, Instrumento 3 | Evidência de correção do mecanismo e de ausência de novo acesso pelo mesmo vetor |
@@ -161,13 +182,15 @@ sobrescrevendo o registro da iteração anterior.
 
 **Abrangência:** os waypoints e o loop se aplicam a incidentes de confidencialidade (ex.: exposição ou
 exfiltração de dados), integridade (ex.: alteração indevida de registros), disponibilidade (ex.: indisponibilidade
-de sistema ou serviço) e autenticidade (ex.: personificação ou assinatura indevida), inclusive quando acidentais
-(sem ação maliciosa identificada) e mesmo quando não há evidência de exfiltração — a ausência de exfiltração
-confirmada não dispensa a avaliação de risco aos titulares (seção 4).
+de sistema ou serviço) e autenticidade (ex.: personificação ou assinatura indevida), qualquer que seja a causa —
+**maliciosa** (ação deliberada de um agente de ameaça), **acidental** (erro humano, configuração indevida) ou
+**ambiental** (falha de infraestrutura, energia ou de provedor de nuvem) — e mesmo quando não há evidência de
+exfiltração. A ausência de exfiltração confirmada, e a ausência de um agente de ameaça identificado, não
+dispensam a avaliação de risco aos titulares (seção 4), que depende do risco e do dano potencial, não da causa.
 
 ## 4. Trilha transversal de privacidade
 
-Esta trilha corre em paralelo à execução técnica (seção 3), desde a Verify & Triage, e não depende da conclusão
+Esta trilha corre em paralelo à execução técnica (seção 3), desde a Verify and Triage, e não depende da conclusão
 da investigação para começar.
 
 1. **Identificação das operações e dados afetados:** o Encarregado, com apoio de Negócio e TI, identifica quais
@@ -248,8 +271,15 @@ em contrário.
 
 ### 6.4 Debrief e melhoria contínua
 
-Todo incidente com encerramento técnico gera um debrief (Instrumento 4), com:
+O waypoint Debrief persegue dois objetivos distintos, que não devem ser confundidos: **encerrar formalmente o
+esforço de resposta** (avaliar e decidir sobre cada ativo temporário criado durante a resposta — acessos,
+imagens forenses, contas e monitoramentos adicionais —, consolidar a documentação dispersa em um registro
+único e apurar as métricas do esforço) e **promover aprendizado organizacional** (revisão após a ação, relatório
+final, apresentação às partes interessadas e plano de melhoria com ações, responsáveis e prazos). Todo incidente
+com encerramento técnico gera um debrief (Instrumento 4), com:
 
+- avaliação e decisão sobre a retenção, modificação ou descomissionamento de cada ativo temporário criado
+  durante a resposta;
 - ações corretivas identificadas, responsável e prazo para cada uma;
 - prova de efetividade da ação corretiva, quando concluída (ex.: teste, evidência de configuração aplicada) —
   **uma ação corretiva só é considerada concluída mediante essa prova, nunca apenas pela afirmação de que foi

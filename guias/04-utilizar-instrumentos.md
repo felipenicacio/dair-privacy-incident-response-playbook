@@ -19,7 +19,7 @@ Um conjunto demonstrativo, preenchido com o cenário fictício INC-2026-001 já 
 
 ## 1. Qual instrumento utilizar e em que momento
 
-1. **Abertura do incidente (Detect / Verify & Triage):** abrir o Instrumento 1 (aba Cadastro_Incidente) e registrar o primeiro evento na Linha_do_Tempo. Se houver indício de dados pessoais afetados, abrir também o Instrumento 2 (aba Caracterizacao, versão 1).
+1. **Abertura do incidente (Detect / Verify and Triage):** abrir o Instrumento 1 (aba Cadastro_Incidente) e registrar o primeiro evento na Linha_do_Tempo. Se houver indício de dados pessoais afetados, abrir também o Instrumento 2 (aba Caracterizacao, versão 1).
 2. **Durante o Response Actions Loop (Scope/Contain/Eradicate/Recover):** usar o Instrumento 3 para acompanhar atividades técnicas e o Instrumento 1 (Linha_do_Tempo, Registro_Decisoes, Gestao_Evidencias) para o registro factual. Cada reentrada no loop gera um novo Ciclo DAIR (CIC-NN), usado nos três instrumentos.
 3. **Nova evidência que altera natureza, escopo ou risco:** registrar uma nova versão no Instrumento 2 (Caracterizacao, Avaliacao_Regulatoria, Decisao_Comunicacao, todas com o mesmo ID de avaliação e versão incrementada) e resumir a mudança na aba Historico.
 4. **Decisão de comunicar:** preencher o Instrumento 5 (Partes A e B) a partir da avaliação aprovada no Instrumento 2, e controlar a execução na Parte C.

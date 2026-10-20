@@ -26,7 +26,7 @@ DAIR é um modelo dinâmico e iterativo. Os waypoints orientam decisões; **não
 
 **Saída:** evento rastreável, investigação aberta.
 
-## Verify & Triage
+## Verify and Triage
 
 **Gatilho:** E02 confirma acesso indevido a 200 registros às 09h25.
 

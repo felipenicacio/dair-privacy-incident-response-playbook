@@ -3,6 +3,14 @@
 **Público:** CISO, coordenador de resposta, SOC, IAM, encarregado, Jurídico, continuidade e donos de serviços.  
 **Objetivo:** transformar um exemplo fictício em procedimento interno validado.
 
+## Passo 0 — Adaptar e aprovar Política e Plano
+
+Antes de adaptar procedimentos técnicos, submeta a [Política](../governanca/politica-resposta-incidentes.md) e o
+[Plano de Resposta a Incidentes](../governanca/plano-resposta-incidentes.md) à aprovação formal da organização,
+preenchendo os campos de configuração (organização, owner, aprovador, versão, vigência) e a lista real de
+contatos, canais e critérios de severidade do Plano. Os passos 1 a 6 abaixo detalham essa adaptação; nenhum deles
+substitui a aprovação formal destes dois documentos antes do uso operacional.
+
 ## Passo 1 — Definir o contexto
 
 Mapear serviços críticos, operações de tratamento, papéis de controlador/operador, contratos, fontes de evidência e recursos de investigação. Identificar regulamentações setoriais adicionais aplicáveis.

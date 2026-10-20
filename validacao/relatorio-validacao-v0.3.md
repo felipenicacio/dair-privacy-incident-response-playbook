@@ -10,7 +10,7 @@ para o rastreamento achado a achado.
 
 - 3 planilhas Excel (modelos em branco): `DAIR_Registro_e_Gestao_de_Incidentes_v0.3.xlsx`, `DAIR_Avaliacao_Riscos_Titulares_ANPD_v0.3.xlsx`, `DAIR_Checklist_Operacional_v0.3.xlsx`.
 - 3 planilhas Excel (conjunto demonstrativo fictício): as mesmas três, com sufixo `_EXEMPLO-INC-2026-001`.
-- 2 documentos Word: `DAIR_Relatorio_Resposta_Incidente_v0.3.docx`, `DAIR_Modelos_Comunicacao_ANPD_Titulares_v0.3.docx`.
+- 2 documentos Word: `DAIR_Relatorio_Resposta_Incidente_v0.3.docx`, `DAIR_Kit_Preparacao_Comunicacoes_ANPD_Titulares_v0.3.docx`.
 - Todos os Markdown do repositório (playbook, cenário, governança, templates, guias, referências).
 
 ## 2. Motor e tipos de teste utilizados (distinção exigida pela auditoria)
@@ -125,12 +125,30 @@ explícita de ausência de data efetiva, já que, no exercício, nenhuma comunic
 ## 8. Correção A07 — Acompanhamento das comunicações
 
 **Mudança no Instrumento 5 (Parte C):** a tabela única "ANPD x Titulares" foi substituída por um controle que
-acompanha separadamente a comunicação inicial à ANPD, até duas complementações, a comunicação aos titulares e a
+acompanha separadamente a comunicação inicial à ANPD, as complementações, a comunicação aos titulares e a
 declaração do art. 9º, §4º — cada uma com processo/protocolo, conteúdo/versão enviada, responsável, aprovação,
 prazo aplicável, data de envio, meio utilizado, evidência comprobatória e situação. Acrescentada a seção C.1
 (classificação de acesso dos documentos anexados e conferência de representação) e C.2 (divulgação pública
 alternativa: justificativa, canais, datas e evidência de manutenção pelo período mínimo de 3 meses). O texto
 agora destaca explicitamente que o envio à ANPD não implica que os titulares também foram comunicados.
+
+**Correção adicional nesta rodada (adequação do Instrumento 5 à continuidade institucional — Política/Plano
+v0.3):** o Instrumento 5 foi retitulado para "Kit de Preparação e Controle das Comunicações ANPD/Titulares" e
+renomeado para `DAIR_Kit_Preparacao_Comunicacoes_ANPD_Titulares_v0.3.docx`, para deixar claro que o documento
+organiza informações e aprovações internas ANTES do preenchimento do formulário oficial do SEI!ANPD (que já
+oferece modalidades preliminar e completa no Documento Principal), e que não constitui protocolo nem substitui
+esse formulário. O limite de "até duas complementações" foi removido — era artificial: a ANPD não fixa um
+número máximo de complementações, apenas o prazo de 20 dias úteis do art. 6º, §3º. A Parte C agora traz um único
+bloco "Complementação à ANPD — registro nº 1", com instrução explícita para duplicá-lo sem limite, e um novo
+bloco "Outras providências ou requisições relacionadas ao processo", também duplicável, para registrar pedidos
+de informação adicional (art. 8º do RCIS) ou determinações da ANPD no mesmo processo. A classificação de acesso
+e a conferência de representação (antiga seção C.1) foram deslocadas para a Parte A (seção A.3), por serem parte
+da preparação de documentos a anexar, e não da execução; a preparação da divulgação pública alternativa (antiga
+seção C.2, parte justificativa/canais/prazo) foi deslocada para a Parte B (seção B.3), mantendo-se em C apenas o
+controle da sua execução (data de início, cumprimento do período mínimo, evidência de manutenção). Validado por
+`validate.py` (OOXML aprovado) e por conversão a PDF com inspeção visual de todas as páginas, incluindo uma
+rodada com todas as tabelas preenchidas com conteúdo realista de teste para confirmar ausência de quebra de
+texto caractere a caractere nos novos blocos (A.3 e nos registros adicionais de C) — ver seção 11.
 
 **Teste executado:** conversão para PDF e inspeção visual de todas as páginas (ver seção 10) — tabela renderiza
 sem cortes após ajuste de largura de colunas (ver achado de teste registrado abaixo).
@@ -208,7 +226,7 @@ páginas renderizadas.
 | Arquivo | Validação de esquema | Páginas (PDF) | Inspeção visual |
 |---|---|---|---|
 | DAIR_Relatorio_Resposta_Incidente_v0.3.docx | Aprovada (329 parágrafos) | 8 | Capa, sumário e seções 1–20 inspecionadas; seção 13 corrigida (inciso correto) |
-| DAIR_Modelos_Comunicacao_ANPD_Titulares_v0.3.docx | Aprovada (195 parágrafos) | 6 (passou por 5, 4 e 5 em iterações intermediárias — ver histórico abaixo) | Todas as páginas inspecionadas em quatro rodadas, incluindo duas com conteúdo realista preenchido (não apenas células vazias) |
+| DAIR_Kit_Preparacao_Comunicacoes_ANPD_Titulares_v0.3.docx | Aprovada (229 parágrafos, após retitulação e reescrita das Partes A/B/C nesta rodada) | 7 vazio / 10 com todas as tabelas preenchidas com conteúdo realista de teste | Todas as páginas inspecionadas em cinco rodadas ao todo (quatro da correção A07 original, mais uma desta rodada com o documento retitulado e as seções A.2/A.3/B.3 novas e os registros de C sem limite de complementação, novamente com conteúdo realista preenchido) — sem quebra de texto caractere a caractere em nenhum bloco |
 
 A Parte C (Instrumento 5) passou por três rodadas de correção, cada uma revelando um problema que a anterior não
 cobria — documentadas aqui para que o histórico fique rastreável:
@@ -383,3 +401,91 @@ do layout vertical — uma troca aceita em favor da legibilidade.
   caso concreto de cada organização.
 - Decisão sobre se as faixas de expansão (A10) atendem ao volume esperado de incidentes da organização, ou se
   devem ser ampliadas antes do uso.
+- Aprovação formal da Política e do Plano de Resposta a Incidentes pela autoridade competente da organização,
+  com preenchimento real dos campos de configuração (seção 0 de ambos) — nenhum dos dois produz efeito sem essa
+  aprovação.
+- Exercício tabletop efetivo do Plano (Jornada 3), com a lista real de contatos, canais e critérios de
+  severidade da organização — o walkthrough textual desta rodada (seção 17, item 7) não substitui essa prática.
+- Definição, pela organização, dos limiares de severidade técnica do Plano (seção 2.1) e dos limites de valor/
+  recurso que exigem aprovação da Direção (Plano, seção 6, e Política, seção 6).
+
+## 17. Validação desta rodada — Instrumento 5 ajustado, Política, Plano e integração
+
+Ferramentas e versões: Node.js com o pacote `docx` (geração), `/mnt/skills/public/docx/scripts/office/validate.py`
+(validação de schema OOXML), LibreOffice (headless, `--convert-to pdf`) com `pdftoppm`/`pdfinfo` para conversão e
+inspeção visual, `/mnt/skills/public/xlsx/scripts/recalc.py` (recálculo de fórmulas via LibreOffice headless),
+`python-docx` (preenchimento de células para os testes de legibilidade com conteúdo realista) e verificação de
+links por varredura de todos os arquivos `.md` do repositório.
+
+1. **Referências legais e metodológicas confrontadas com fontes primárias.** O procedimento vigente de
+   comunicado de incidente de segurança (CIS) foi consultado diretamente em
+   `gov.br/anpd/.../comunicado-de-incidente-de-seguranca-cis` nesta rodada (ver seção 13) e usado para
+   fundamentar as seções A.2/A.3 do Instrumento 5 e a seção 4 do Plano — nenhuma informação sobre o procedimento
+   do SEI foi inferida de memória. Os artigos do RCIS já verificados nas rodadas anteriores (seção 13 e
+   `referencias/fontes-e-atribuicoes.md`) não foram alterados; a Política e o Plano reutilizam as mesmas
+   referências, sem introduzir novo conteúdo normativo não verificado.
+2. **Compatibilidade de responsabilidades e critérios entre Política, Plano, Playbook e Instrumentos.** Os
+   papéis nomeados na Política (seção 5) e no Plano (seções 1.3 e 2.2) reutilizam os mesmos nomes de papel já
+   empregados em `governanca/01-papeis-e-escalonamento.md` (Líder IR/Líder de Resposta, CISO/Segurança, SOC, TI,
+   IAM, Encarregado, Jurídico, Controlador) e nos Instrumentos 1 e 2 (Responsável, Aprovação, Encarregado,
+   representante autorizado do controlador) — não foram criados nomes de papel paralelos. O waypoint do Plano
+   (seção 3) usa os mesmos nomes de fase do Playbook (Prepare, Detect, Verify & Triage, Scope/Contain/
+   Eradicate/Recover, Debrief) e dos Instrumentos 1/3.
+3. **Ausência de dados do cenário fictício ou de aprovação simulada nos modelos limpos.** Busca por
+   `INC-2026-001`, identificadores do cenário (`EVT-`, `AVR-0`, datas e números do caso fictício) e por valores
+   de aprovação preenchidos nos arquivos `governanca/politica-resposta-incidentes.md`,
+   `governanca/plano-resposta-incidentes.md` e nos dois `.docx` correspondentes: nenhuma ocorrência. Os campos
+   de aprovação, owner, versão e vigência permanecem como `[preencher]` em ambos os documentos.
+4. **Links e referências testados após as renomeações.** Varredura automatizada de todos os links relativos em
+   arquivos `.md` do repositório (regex sobre `](...)`, resolvendo o caminho contra o diretório de cada arquivo):
+   0 links quebrados. Busca adicional por ocorrências remanescentes do nome antigo do Instrumento 5
+   (`DAIR_Modelos_Comunicacao_ANPD_Titulares_v0.3`): nenhuma.
+5. **Renderização e inspeção de todas as páginas dos DOCX novos/alterados.** `validate.py` aprovado para os
+   quatro arquivos Word afetados nesta rodada (Instrumento 5 reescrito — 229 parágrafos; Política — 143
+   parágrafos; Plano — 282 parágrafos; Instrumento 4 reconstruído apenas para atualizar a referência ao
+   Instrumento 5 no Anexo — 329 parágrafos, conteúdo normativo inalterado). Conversão para PDF e inspeção visual
+   de todas as páginas de cada um (7, 6 e 7 páginas vazias, respectivamente, para Instrumento 5/Política/Plano).
+6. **Teste de leiaute com preenchimento fictício realista em cópias descartáveis.** Todas as tabelas e campos
+   `[preencher]`/vazios da Política e do Plano foram preenchidos com um texto de teste deliberadamente longo
+   (para forçar o pior caso de quebra de linha) em cópias descartáveis (`teste_plano.docx`, não versionadas),
+   convertidos para PDF e inspecionados — sem quebra de texto caractere a caractere em nenhuma célula, inclusive
+   na tabela de contatos (5 colunas) e nos blocos verticais de waypoint do Plano. O Instrumento 5 já havia
+   recebido o mesmo teste na rodada anterior (seção 15.5) e foi reconfirmado após a reescrita das Partes A/B/C.
+7. **Walkthrough textual dos três cenários adicionais e do cenário original com o novo Plano.** Este é um
+   exercício de leitura cruzada do texto do Plano contra os registros já existentes dos cenários — **não é um
+   exercício operacional executado** (não houve simulação ao vivo, cronometragem nem tabletop com os novos
+   documentos nesta rodada):
+   - *Cenário original (INC-2026-001, acesso indevido + exfiltração via token):* mapeia diretamente à seção 3 do
+     Plano — Detect (E01) → Verify & Triage (E02, abertura de AVR-01) → Scope 1/Contain 1/Eradicate 1/Recover 1
+     → reentrada por nova evidência (E04, 30.000 registros) → Scope 2/Contain 2/Eradicate 2/Recover 2. A trilha
+     de privacidade (seção 4 do Plano) corresponde à reavaliação AVR-01→AVR-02 já registrada no Instrumento 2.
+   - *Cenário 15.1, envio incorreto:* mapeia à seção 4, item 6–7 do Plano (preparação/envio/comprovação
+     distintos; complementação sem limite numérico) e à Parte C do Instrumento 5 — o registro "Complementação à
+     ANPD" corrigiu o número de titulares sem reabrir o prazo original, consistente com a seção 4, item 5.
+   - *Cenário 15.2, alteração indevida (integridade, sem exportação):* mapeia à seção 3 do Plano, nota de
+     abrangência ("incidentes de confidencialidade, integridade, disponibilidade e autenticidade... inclusive
+     acidentais") e à Condição B via inciso III do art. 5º do RCIS, já registrada no Instrumento 2.
+   - *Cenário 15.3, indisponibilidade sem exfiltração (ransomware):* mapeia à mesma nota de abrangência do
+     Plano e à seção 2.4 (distinção entre severidade técnica e avaliação regulatória) — a indisponibilidade de
+     14h foi tecnicamente grave sem que a exfiltração estivesse confirmada, exigindo avaliação regulatória
+     própria ("Em apuração"), consistente com a seção 2.4.
+   Em todos os quatro casos, o texto do Plano permite identificar, sem ambiguidade, o documento orientador, o
+   instrumento de registro e o responsável típico — conferido manualmente linha a linha, não apenas por
+   amostragem.
+8. **Identificação de quem decide, quem executa, qual registro usar e quais pendências restam.** Confirmado pela
+   tabela de integração do `README.md` (seção "Hierarquia dos documentos") cruzada com a tabela de waypoints do
+   Plano (seção 3) e com a matriz de responsabilidades de `governanca/01-papeis-e-escalonamento.md`: para cada
+   uma das oito atividades principais há exatamente um documento orientador, um instrumento de registro e um
+   responsável típico nomeado — sem sobreposição nem lacuna identificada nesta conferência.
+9. **Regressão proporcional nos instrumentos afetados.** O Instrumento 4 foi reconstruído (apenas a linha do
+   Anexo que referencia o Instrumento 5) e revalidado por `validate.py` (329 parágrafos, schema aprovado); os
+   Instrumentos 1, 2 e 3 não foram alterados nesta rodada — testados, em cópias descartáveis não versionadas,
+   por `recalc.py`: 150, 12 e 0 fórmulas recalculadas, respectivamente, 0 erros em cada um, confirmando que a
+   adição da Política/Plano e o ajuste do Instrumento 5 não afetaram os instrumentos em Excel.
+10. **Registro de ferramentas, versões, testes e limitações.** Ver o parágrafo de abertura desta seção para
+    ferramentas e versões. Limitações desta rodada: (a) o walkthrough do item 7 é uma conferência textual, não um
+    tabletop executado — a organização deve exercitar efetivamente o Plano (Jornada 3) antes de confiar nele em
+    um incidente real; (b) a lista de contatos do Plano (seção 1.3) e os critérios de severidade (seção 2.1) são
+    campos de configuração vazios por desenho — este repositório não pode testá-los com dados reais de nenhuma
+    organização; (c) a verificação automatizada de DOCX usou LibreOffice, não Microsoft Word — mantém-se a
+    recomendação já registrada na seção 16 de confirmação em Word real antes do uso em produção.

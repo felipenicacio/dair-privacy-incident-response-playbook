@@ -43,6 +43,12 @@ inclusão de um aviso textual — todo "Corrigido" tem um teste correspondente n
   cenários de revisão com conteúdo realista também revelou que a tabela da Parte C do Instrumento 5 (A07) ainda
   quebrava texto caractere a caractere nas células de valor, mesmo após duas correções anteriores de cabeçalho —
   corrigida com uma mudança estrutural de layout (ver A07 acima).
+- **Rodada adicional (continuidade institucional):** após o merge das correções acima, o Instrumento 5 foi
+  retitulado e reestruturado ("Kit de Preparação e Controle das Comunicações ANPD/Titulares" — ver A01/A07
+  acima) e o repositório passou a incluir uma Política e um Plano de Resposta a Incidentes como modelos
+  institucionais reutilizáveis, integrados aos instrumentos existentes por uma hierarquia e uma tabela de
+  integração no `README.md`. Validação detalhada desta rodada na seção 17 do
+  [relatório de validação](relatorio-validacao-v0.3.md).
 - Nenhum achado foi marcado "Corrigido" apenas por inclusão de aviso textual — cada linha cita um teste
   (recálculo, validação estrutural, inspeção visual, inspeção de valores ou revisão de conteúdo cruzada).
 - Pendências remanescentes (nenhuma bloqueia o uso dos instrumentos, mas exigem atenção humana):

@@ -62,4 +62,4 @@ Avaliar de 0 a 2 cada dimensão, conforme evidência do exercício: **0 = não d
 
 Comparar resultados com a [linha do tempo de referência](../cenario/02-linha-do-tempo-e-decisoes.md) e registrar três melhorias prioritárias, com donos e evidências de verificação. Revisar o [checklist operacional](../templates/04-checklist-operacional.md).
 
-**Limite da v0.2:** o tabletop é conduzido manualmente. Não existe sistema de injeção automática, formulário interativo persistente ou geração de relatório.
+**Limite desta versão:** o tabletop é conduzido manualmente. Não existe sistema de injeção automática, formulário interativo persistente ou geração de relatório — os instrumentos operacionais da [Jornada 4](04-utilizar-instrumentos.md) podem apoiar o registro manual do exercício, mas não automatizam a condução do tabletop.

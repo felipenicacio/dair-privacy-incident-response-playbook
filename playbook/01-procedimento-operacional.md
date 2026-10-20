@@ -84,7 +84,7 @@ Em cada fato novo relevante, perguntar:
 
 1. Quais dados pessoais foram **confirmadamente** afetados? Quais são apenas hipótese?
 2. Existe potencial de afetação significativa de direitos/interesses fundamentais?
-3. Está presente alguma categoria prevista no art. 5º, II, do RCIS?
+3. Está presente alguma categoria prevista nos incisos I a VI do art. 5º do RCIS (sensíveis, crianças/adolescentes/idosos, financeiros, autenticação, sigilo legal/judicial/profissional ou larga escala)?
 4. Os requisitos cumulativos de comunicação foram atendidos?
 5. Qual o marco de conhecimento do controlador, o prazo aplicável e as exceções?
 6. Quais dados permanecem desconhecidos e como serão complementados?

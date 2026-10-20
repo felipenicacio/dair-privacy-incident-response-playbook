@@ -1,6 +1,8 @@
 # DAIR Privacy Incident Response Playbook
 
-**Versão 0.3.0 — Instrumentos operacionais** · **20 de outubro de 2026** · **Felipe Nicácio**
+**Versão 0.3.0 — Instrumentos operacionais (correção pós-auditoria técnica)** · **20 de outubro de 2026** · **Felipe Nicácio**
+
+> Esta revisão corrige 18 achados (A01–A18) de uma auditoria técnica independente sobre o commit `f81732b` (v0.3 original) — identificadores agora são manuais e estáveis, a reconciliação entre versões de avaliação regulatória foi corrigida, os artigos do art. 5º do RCIS foram referenciados corretamente (incisos I a VI, não apenas o II), e os prazos passam a separar cálculo de apoio de prazo validado. Ver a [matriz de achados A01–A18](validacao/matriz-achados-A01-A18.md) e o [relatório de validação atualizado](validacao/relatorio-validacao-v0.3.md).
 
 > Projeto aberto e independente de apoio à resposta a incidentes envolvendo dados pessoais. O cenário é fictício. Não é publicação oficial ou endossada pela SANS, ANPD ou NIST e não substitui decisões técnicas ou jurídicas contextualizadas.
 
@@ -55,6 +57,7 @@ Em 19/10/2026, uma empresa fictícia detecta acesso anômalo em sua conta admini
 - [Guia de utilização dos instrumentos](guias/04-utilizar-instrumentos.md)
 - [Instrumentos em Excel](instrumentos/excel/) · [Instrumentos em Word](instrumentos/word/) · [Conjunto demonstrativo](instrumentos/exemplos/)
 - [Relatório de validação técnica v0.3](validacao/relatorio-validacao-v0.3.md)
+- [Matriz de achados da auditoria — A01 a A18](validacao/matriz-achados-A01-A18.md)
 
 ### Referências
 - [Fontes, atribuições e limitações](referencias/fontes-e-atribuicoes.md)
@@ -70,7 +73,7 @@ Em 19/10/2026, uma empresa fictícia detecta acesso anômalo em sua conta admini
 
 ## Limitações da versão 0.3
 
-Os instrumentos não possuem sincronização automática entre si, não há automação SOAR nem geração automática de relatório a partir das planilhas, e os cálculos de prazo regulatório são apoio em dias úteis simples — não substituem validação jurídica (feriados, regras de pequeno porte e exceções específicas devem ser confirmados caso a caso). A avaliação regulatória deve sempre ser validada no contexto do incidente, conforme normas vigentes. Ver o [relatório de validação](validacao/relatorio-validacao-v0.3.md) para o detalhamento.
+Os instrumentos não possuem sincronização automática entre si — os identificadores (EVT-, DEC-, EVD-, ACA-, AVR-, CIC-, CHK-) são **manuais e estáveis** (não gerados por fórmula de posição de linha), com detecção de duplicidade, e são eles — não a posição física das linhas — que ligam os registros entre abas e entre instrumentos. Não há automação SOAR nem geração automática de relatório a partir das planilhas. Os cálculos de prazo regulatório são apoio em dias úteis simples (função WORKDAY, sem feriados) — o campo que efetivamente vale é o "Prazo Aplicável Validado", preenchido manualmente com fundamento, calendário de referência e responsável; feriados, regras de pequeno porte (que não decorrem do nome/porte aparente da organização) e exceções setoriais específicas devem sempre ser confirmados pelo Jurídico caso a caso. A avaliação regulatória deve sempre ser validada no contexto do incidente, conforme normas vigentes — "larga escala" não tem limiar numérico automático. As faixas de linhas pré-formatadas em cada planilha (até ~500 registros, conforme o instrumento) são generosas e testadas, mas fixas, não ilimitadas. Ver o [relatório de validação](validacao/relatorio-validacao-v0.3.md) e a [matriz de achados A01–A18](validacao/matriz-achados-A01-A18.md) para o detalhamento completo, inclusive pontos que ainda exigem revisão jurídica/técnica humana.
 
 ## Próximas evoluções
 

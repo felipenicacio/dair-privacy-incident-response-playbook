@@ -58,14 +58,16 @@ Todos os instrumentos compartilham os mesmos prefixos de identificador:
 | `CIC-NN` | Ciclo DAIR (iteração do loop) | Instrumento 3 — Controle_Ciclos |
 | `CHK-NNN` | Atividade do checklist | Instrumento 3 — Checklist |
 
-**Não há sincronização automática entre os arquivos nesta versão.** Para transferir informação de um instrumento a outro sem perder rastreabilidade: copie o identificador relevante (não o conteúdo integral) entre as planilhas e documentos, e, no Instrumento 4, remeta aos IDs em vez de retranscrever os dados.
+**Correção pós-auditoria (A02/A03):** a partir desta versão, todos os identificadores acima são **digitados manualmente** — não são mais gerados por fórmula a partir da posição da linha. Isso significa que: (1) o mesmo ID nunca deve ser reutilizado ou renumerado, mesmo após inserir, excluir ou reordenar linhas; (2) no Instrumento 2, é a mesma ID `AVR-NN` — não a posição da linha — que liga os registros de Caracterizacao, Avaliacao_Regulatoria, Decisao_Comunicacao e a linha correspondente em Historico; preencha sempre a mesma ID nas quatro abas para a mesma versão. Cada planilha sinaliza em vermelho e bloqueia a gravação de um ID duplicado dentro da mesma coluna.
+
+**Não há sincronização automática entre os arquivos nesta versão.** Para transferir informação de um instrumento a outro sem perder rastreabilidade: copie o identificador relevante (não o conteúdo integral) entre as planilhas e documentos, e, no Instrumento 4, remeta aos IDs em vez de retranscrever os dados. O Instrumento 1 inclui ainda a aba **Operador_e_Acompanhamento**, para registrar o aviso do operador ao controlador (quando houver operador) e o acompanhamento de requisições/determinações da ANPD após a comunicação — distinga ali o encerramento técnico interno (decisão da equipe de resposta) da eventual extinção do processo pela autoridade (ato da ANPD).
 
 ## 5. Validações e aprovações necessárias
 
 - O **resultado da avaliação regulatória** (Instrumento 2) é sempre manual e exige fundamentação registrada — nenhuma fórmula decide isso.
 - A **matriz de probabilidade x impacto** (Instrumento 2, aba Matriz_Apoio) é apoio interno de priorização e nunca fundamento de decisão de comunicação.
-- Os **prazos calculados** (Instrumento 2, 3 dias úteis a partir do marco de conhecimento) são cálculo de apoio em dias úteis simples, sem considerar feriados ou regra de pequeno porte — sempre validar com o Jurídico.
-- Nenhuma comunicação deve ser registrada como "Realizada" (Instrumento 5, Parte C) sem evidência comprobatória correspondente.
+- Os **prazos** (Instrumento 2, aba Decisao_Comunicacao) têm uma "Data Calculada de Apoio" (fórmula WORKDAY, 3 ou 6 dias úteis conforme elegibilidade de pequeno porte, sem considerar feriados) e um campo separado, manual, de "Prazo Aplicável Validado" — é este último que vale, com fundamento, calendário de referência e responsável pela validação registrados. A elegibilidade de pequeno porte nunca deve ser presumida pelo nome ou porte aparente da organização. A complementação à ANPD (até 20 dias úteis) conta a partir da data em que a comunicação foi **efetivamente realizada**, nunca de uma data apenas planejada.
+- Nenhuma comunicação deve ser registrada como "Enviado"/"Realizada" (Instrumento 5, Parte C) sem evidência comprobatória correspondente — a Parte C acompanha separadamente a comunicação inicial à ANPD, cada complementação, a comunicação aos titulares e a declaração do art. 9º, §4º; enviar à ANPD não significa que os titulares também foram comunicados.
 - O encerramento da resposta técnica (Instrumento 1, Instrumento 3 — Controle_Ciclos, Instrumento 4 seção 18) exige decisão explícita e atribuível, conforme o modelo DAIR original.
 
 ## 6. Cuidados com dados pessoais e evidências sensíveis

@@ -1,8 +1,15 @@
 # DAIR Privacy Incident Response Playbook
 
-**Versão 0.3.0 — Instrumentos operacionais (correção pós-auditoria técnica)** · **20 de outubro de 2026** · **Felipe Nicácio**
+**Versão 0.3.0 — Governança institucional, instrumentos operacionais e correção pós-auditoria técnica** · **20 de outubro de 2026** · **Felipe Nicácio**
 
-> Esta revisão corrige 18 achados (A01–A18) de uma auditoria técnica independente sobre o commit `f81732b` (v0.3 original) — identificadores agora são manuais e estáveis, a reconciliação entre versões de avaliação regulatória foi corrigida, os artigos do art. 5º do RCIS foram referenciados corretamente (incisos I a VI, não apenas o II), e os prazos passam a separar cálculo de apoio de prazo validado. Ver a [matriz de achados A01–A18](validacao/matriz-achados-A01-A18.md) e o [relatório de validação atualizado](validacao/relatorio-validacao-v0.3.md).
+> Esta revisão acrescenta a **Política** e o **Plano de Resposta a Incidentes** — modelos institucionais
+> reutilizáveis, sem dados de nenhuma organização específica — e ajusta o Instrumento 5 (retitulado "Kit de
+> Preparação e Controle das Comunicações ANPD/Titulares"), além de corrigir 18 achados (A01–A18) de uma auditoria
+> técnica independente sobre o commit `f81732b` (v0.3 original) — identificadores agora são manuais e estáveis, a
+> reconciliação entre versões de avaliação regulatória foi corrigida, os artigos do art. 5º do RCIS foram
+> referenciados corretamente (incisos I a VI, não apenas o II), e os prazos passam a separar cálculo de apoio de
+> prazo validado. Ver a [matriz de achados A01–A18](validacao/matriz-achados-A01-A18.md) e o [relatório de
+> validação atualizado](validacao/relatorio-validacao-v0.3.md).
 
 > Projeto aberto e independente de apoio à resposta a incidentes envolvendo dados pessoais. O cenário é fictício. Não é publicação oficial ou endossada pela SANS, ANPD ou NIST e não substitui decisões técnicas ou jurídicas contextualizadas.
 
@@ -13,11 +20,43 @@ O projeto adapta o **Dynamic Approach to Incident Response (DAIR)**, de Joshua W
 | Quero... | Por onde começar | O que obtenho |
 |---|---|---|
 | **Aprender** o modelo | 📖 [Jornada 1 — Aprender](guias/01-aprender.md) | Estudo guiado de um incidente e suas duas iterações DAIR |
-| **Implementar** na minha organização | 🛠️ [Jornada 2 — Implementar](guias/02-implementar.md) | Sequência de adaptação, responsabilidades, controles e validação |
+| **Implementar** na minha organização | 🛠️ [Jornada 2 — Implementar](guias/02-implementar.md) | Sequência de adaptação, responsabilidades, controles e validação — começando pela Política e pelo Plano |
 | **Testar minha equipe** | 🧪 [Jornada 3 — Tabletop](guias/03-testar-equipe.md) | Exercício manual com quatro rodadas, perguntas e avaliação |
 | **Usar os instrumentos editáveis** | 📊 [Jornada 4 — Utilizar os instrumentos](guias/04-utilizar-instrumentos.md) | Planilhas e documentos Word prontos para uso operacional |
 
-## Novidade da v0.3 — Instrumentos operacionais editáveis
+## Hierarquia dos documentos
+
+Da diretriz à execução registrada, em ordem decrescente de abstração — cada nível se apoia no anterior e nenhum
+duplica o conteúdo normativo do outro:
+
+| Nível | Documento | Função |
+|---|---|---|
+| 1 | [Política de Resposta a Incidentes](governanca/politica-resposta-incidentes.md) ([.docx](instrumentos/word/DAIR_Politica_Resposta_Incidentes_v0.3.docx)) | Diretrizes, responsabilidades e autoridade |
+| 2 | [Plano de Resposta a Incidentes](governanca/plano-resposta-incidentes.md) ([.docx](instrumentos/word/DAIR_Plano_Resposta_Incidentes_v0.3.docx)) | Mobilização e coordenação da resposta |
+| 3 | [Playbook DAIR](playbook/01-procedimento-operacional.md) | Procedimentos técnicos e orientação de execução |
+| 4 | Instrumentos 1–5 (abaixo) | Registro, avaliação, execução e comunicação |
+| 5 | [Exemplos](instrumentos/exemplos/) e [cenário](cenario/01-cenario-e-premissas.md) | Treinamento com dados fictícios |
+
+### Tabela de integração — quem usa o quê, para quê
+
+| Atividade | Documento orientador | Instrumento usado | Responsável típico | Registro produzido |
+|---|---|---|---|---|
+| Definir papéis, autoridade e obrigação de reportar | Política (seções 5–7) | — | Direção / Líder de Resposta | Papéis nomeados no Plano, seção 1.3 |
+| Ativar e mobilizar a resposta | Plano (seção 1) | Instrumento 1 | Líder de Resposta | Registro de abertura do incidente |
+| Classificar severidade e escalonar | Plano (seção 2) | Instrumento 1 | Líder de Resposta | Classificação técnica registrada |
+| Executar Prepare/Detect/Verify/Loop/Debrief | Plano (seção 3) + Playbook | Instrumentos 1 e 3 | Segurança / TI | Eventos, decisões, checklist |
+| Avaliar risco aos titulares (RCIS, art. 5º) | Plano (seção 4) | Instrumento 2 | Encarregado / Jurídico | Avaliação versionada |
+| Preparar e controlar comunicação à ANPD/titulares | Plano (seção 4) | Instrumento 5 | Encarregado | Partes A/B preparadas, Parte C executada |
+| Preservar evidências e validar recuperação | Plano (seção 5) | Instrumentos 1 e 3 | Segurança / TI / Continuidade | Cadeia de custódia, validação de recuperação |
+| Encerrar, reabrir e consolidar debrief | Plano (seção 6) | Instrumentos 1 e 4 | Líder de Resposta | Relatório de encerramento |
+
+O registro central do incidente é o **Instrumento 1**; as avaliações de risco são **versionadas no Instrumento
+2**; as decisões de contenção/erradicação/recuperação ficam no **Instrumento 1 e 3**; as evidências têm cadeia de
+custódia no **Instrumento 1**; as tarefas de resposta técnica, no **Instrumento 3**; e as provas de comunicação,
+no **Instrumento 5, Parte C** — cada informação tem um único lugar de registro, referenciado pelos demais
+documentos por identificador (nunca duplicado como texto livre em mais de um lugar).
+
+## Instrumentos operacionais editáveis
 
 Cinco instrumentos em Excel e Word, independentes do cenário fictício, prontos para adaptação e uso real:
 
@@ -46,7 +85,9 @@ Em 19/10/2026, uma empresa fictícia detecta acesso anômalo em sua conta admini
 - [Relatório de encerramento](cenario/03-relatorio-encerramento.md)
 
 ### Governança e privacidade
-- [Papéis e escalonamento](governanca/01-papeis-e-escalonamento.md)
+- [Política de Resposta a Incidentes](governanca/politica-resposta-incidentes.md) ([.docx](instrumentos/word/DAIR_Politica_Resposta_Incidentes_v0.3.docx)) — modelo institucional, sem dados de organização específica
+- [Plano de Resposta a Incidentes](governanca/plano-resposta-incidentes.md) ([.docx](instrumentos/word/DAIR_Plano_Resposta_Incidentes_v0.3.docx)) — modelo institucional, sem dados de organização específica
+- [Papéis e escalonamento](governanca/01-papeis-e-escalonamento.md) *(aplicado ao cenário fictício — para o modelo institucional, ver Política/Plano acima)*
 - [Critérios de aceite](governanca/02-criterios-aceite.md)
 - [Avaliação de riscos aos titulares — exemplo preenchido](templates/01-avaliacao-risco-titulares.md)
 - [Registro de incidente e evidências — exemplo preenchido](templates/02-registro-incidente.md)
@@ -66,7 +107,12 @@ Em 19/10/2026, uma empresa fictícia detecta acesso anômalo em sua conta admini
 ## Como usar com segurança
 
 1. **Para aprender:** acompanhe o caso simulado, faça suas próprias decisões antes de ler a cronologia completa e compare as justificativas.
-2. **Para implementar:** adapte os procedimentos e os registros a sistemas, contratos, responsabilidades, controles e critérios jurídicos reais. Os arquivos preenchidos **não são formulários prontos para uso em incidentes reais**.
+2. **Para implementar, siga esta ordem de adoção:**
+   1. Adapte e aprove formalmente a **Política de Resposta a Incidentes** (campos de configuração na seção 0).
+   2. Adapte e aprove o **Plano de Resposta a Incidentes**, preenchendo a lista real de contatos, canais e critérios de severidade/escalonamento da organização.
+   3. Prepare contatos, acessos e controles (Plano, seções 1.3 e 1.5) e revise o Playbook DAIR frente aos sistemas e contratos reais.
+   4. Treine e exercite a equipe (Jornada 3 — Tabletop) com o Plano aprovado.
+   5. Só então use os Instrumentos 1–5 operacionalmente, em incidentes reais — nunca os arquivos de exemplo preenchidos, que **não são formulários prontos para uso em incidentes reais**.
 3. **Para testar:** um facilitador deve entregar as evidências gradualmente e manter a cronologia de referência reservada até o debrief.
 
 **Não publique dados pessoais reais, tokens, credenciais, registros forenses ou informações restritas em issues, discussões ou pull requests públicos.** Use ambiente interno controlado para incidentes efetivos.

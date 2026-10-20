@@ -25,7 +25,8 @@ declara conformidade com ela — ver "Limites" ao final.
 - **Resolução CD/ANPD nº 15/2024 (RCIS)**, de 24/04/2024 — "Regulamento de Comunicação de Incidente de Segurança":
   publicação no Diário Oficial da União, Seção 1, edição de 26/04/2024 (https://www.in.gov.br/web/dou/-/resolucao-cd/anpd-n-15-de-24-de-abril-de-2024-556243024)
   e página da ANPD sobre comunicado de incidente de segurança (https://www.gov.br/anpd/pt-br/canais_atendimento/agente-de-tratamento/comunicado-de-incidente-de-seguranca-cis),
-  ambas consultadas em 20/10/2026. Artigos efetivamente utilizados para fundamentar o conteúdo dos Instrumentos 2 e 5:
+  ambas consultadas em 20/10/2026. Artigos efetivamente utilizados para fundamentar o conteúdo dos Instrumentos 2
+  e 5, da Política e do Plano de Resposta a Incidentes:
   - **Art. 5º, caput e incisos I a VI** — condições cumulativas de risco/dano relevante (afetação significativa +
     ao menos uma categoria: I. dados sensíveis; II. crianças/adolescentes/idosos; III. dados financeiros;
     IV. dados de autenticação; V. sigilo legal/judicial/profissional; VI. larga escala). Correção A05 desta

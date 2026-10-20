@@ -1,38 +1,63 @@
 # DAIR Privacy Incident Response Playbook
 
-**Versão:** 0.1.0 (MVP) · **Data:** 20/10/2026 · **Autor da adaptação:** Felipe Nicácio
+**Versão 0.2.0 — Guias de utilização** · **20 de outubro de 2026** · **Felipe Nicácio**
 
-> Projeto independente, educacional e de uso operacional adaptável. Não é publicação oficial da SANS, da ANPD ou do NIST. O incidente e a organização retratados são fictícios. Os registros preenchidos são decisões simuladas, não atos efetivos.
+> Projeto aberto e independente de apoio à resposta a incidentes envolvendo dados pessoais. O cenário é fictício. Não é publicação oficial ou endossada pela SANS, ANPD ou NIST e não substitui decisões técnicas ou jurídicas contextualizadas.
 
-## Objetivo
+O projeto adapta o **Dynamic Approach to Incident Response (DAIR)**, de Joshua Wright / SANS Institute, a um caso de acesso indevido e exportação de dados pessoais, integrando resposta técnica, avaliação de risco aos titulares e governança LGPD/ANPD. Seu diferencial é **reavaliar escopo, contenção, erradicação e recuperação quando surgem novas evidências**, em vez de presumir um fluxo linear.
 
-Aplicar o **Dynamic Approach to Incident Response (DAIR)** de Joshua Wright, publicado pela SANS Institute, à resposta a incidentes envolvendo dados pessoais, integrando a atuação técnica e a avaliação regulatória sob a LGPD e a ANPD.
+## Escolha sua jornada
 
-## Como executar o exercício
+| Quero... | Por onde começar | O que obtenho |
+|---|---|---|
+| **Aprender** o modelo | 📖 [Jornada 1 — Aprender](guias/01-aprender.md) | Estudo guiado de um incidente e suas duas iterações DAIR |
+| **Implementar** na minha organização | 🛠️ [Jornada 2 — Implementar](guias/02-implementar.md) | Sequência de adaptação, responsabilidades, controles e validação |
+| **Testar minha equipe** | 🧪 [Jornada 3 — Tabletop](guias/03-testar-equipe.md) | Exercício manual com quatro rodadas, perguntas e avaliação |
 
-1. Leia o [cenário e as premissas](cenario/01-cenario-e-premissas.md).
-2. Execute o [procedimento operacional](playbook/01-procedimento-operacional.md).
-3. Compare com a [linha do tempo e as decisões](cenario/02-linha-do-tempo-e-decisoes.md).
-4. Analise [risco aos titulares](templates/01-avaliacao-risco-titulares.md) e [registro do incidente](templates/02-registro-incidente.md).
-5. Examine a [comunicação simulada](templates/03-comunicacao-simulada.md).
-6. Conclua com [relatório de encerramento](cenario/03-relatorio-encerramento.md) e [critérios de aceite](governanca/02-criterios-aceite.md).
+**Início rápido:** quem dispõe de 15 minutos pode ler o [cenário](cenario/01-cenario-e-premissas.md), consultar as [decisões](cenario/02-linha-do-tempo-e-decisoes.md) e identificar por que o bloqueio da conta não encerrou o acesso via token. Para uso operacional, siga a jornada de implementação completa.
 
-## Estrutura documental
+## Cenário didático
 
-- [Cenário de incidente](cenario/01-cenario-e-premissas.md)
-- [Cronologia e pontos de decisão](cenario/02-linha-do-tempo-e-decisoes.md)
-- [Relatório final](cenario/03-relatorio-encerramento.md)
-- [Governança e escalonamento](governanca/01-papeis-e-escalonamento.md)
+Em 19/10/2026, uma empresa fictícia detecta acesso anômalo em sua conta administrativa do CRM. Após confirmação de consulta a **200 registros**, a equipe bloqueia a conta. Pouco depois, uma exportação via **token ainda ativo** revela comprometimento de **30.000 titulares**. A equipe precisa reabrir a investigação, executar nova contenção, reavaliar risco e deliberar sobre obrigações de comunicação. **Todas as decisões e comunicações registradas neste repositório são simulações.**
+
+## Materiais disponíveis
+
+### Referência técnica
+- [Procedimento operacional DAIR](playbook/01-procedimento-operacional.md)
+- [Cenário e premissas](cenario/01-cenario-e-premissas.md)
+- [Linha do tempo e decisões](cenario/02-linha-do-tempo-e-decisoes.md)
+- [Relatório de encerramento](cenario/03-relatorio-encerramento.md)
+
+### Governança e privacidade
+- [Papéis e escalonamento](governanca/01-papeis-e-escalonamento.md)
 - [Critérios de aceite](governanca/02-criterios-aceite.md)
-- [Playbook DAIR](playbook/01-procedimento-operacional.md)
-- [Matriz de avaliação de riscos](templates/01-avaliacao-risco-titulares.md)
-- [Registro do incidente](templates/02-registro-incidente.md)
-- [Modelos de comunicação](templates/03-comunicacao-simulada.md)
-- [Checklist operacional](templates/04-checklist-operacional.md)
-- [Fontes e atribuições](referencias/fontes-e-atribuicoes.md)
+- [Avaliação de riscos aos titulares — exemplo preenchido](templates/01-avaliacao-risco-titulares.md)
+- [Registro de incidente e evidências — exemplo preenchido](templates/02-registro-incidente.md)
+- [Comunicações simuladas — não enviadas](templates/03-comunicacao-simulada.md)
+- [Checklist operacional — exercício](templates/04-checklist-operacional.md)
 
-## Limitações e segurança
+### Referências
+- [Fontes, atribuições e limitações](referencias/fontes-e-atribuicoes.md)
+- [Licença dos conteúdos autorais](LICENSE.md)
 
-Este MVP usa cenário totalmente fictício. Não automatiza SIEM/SOAR nem substitui investigação forense, decisão do controlador ou assessoria jurídica. **Não publique dados pessoais reais, tokens, credenciais nem evidências sensíveis em repositórios públicos.**
+## Como usar com segurança
 
-Os conteúdos autorais são licenciados em [CC BY 4.0](LICENSE.md). DAIR é criação de Joshua Wright / SANS Institute; projeto independente, sem endosso institucional.
+1. **Para aprender:** acompanhe o caso simulado, faça suas próprias decisões antes de ler a cronologia completa e compare as justificativas.
+2. **Para implementar:** adapte os procedimentos e os registros a sistemas, contratos, responsabilidades, controles e critérios jurídicos reais. Os arquivos preenchidos **não são formulários prontos para uso em incidentes reais**.
+3. **Para testar:** um facilitador deve entregar as evidências gradualmente e manter a cronologia de referência reservada até o debrief.
+
+**Não publique dados pessoais reais, tokens, credenciais, registros forenses ou informações restritas em issues, discussões ou pull requests públicos.** Use ambiente interno controlado para incidentes efetivos.
+
+## Limitações da versão 0.2
+
+Esta versão contém documentação Markdown e um exercício guiado manual. **Não** disponibiliza automação SOAR, formulário persistente, planilha com fórmulas, arquivos Word editáveis nem simulador automático. A avaliação regulatória deve sempre ser validada no contexto do incidente, conforme normas vigentes.
+
+## Próximas evoluções
+
+- **v0.3:** instrumentos editáveis independentes do cenário e orientações de preenchimento;
+- **v0.4:** exercícios com injeção de evidências e material para facilitadores;
+- **v1.0:** validação com profissionais e refinamento técnico-regulatório.
+
+## Créditos e licença
+
+Adaptação e materiais autorais: **Felipe Nicácio**, sob [CC BY 4.0](LICENSE.md). O DAIR é de autoria de **Joshua Wright**, divulgado pela **SANS Institute**. Este projeto não implica endosso de terceiros.

@@ -19,7 +19,7 @@
 3. Substituir registros simulados por evidências reais em repositório **restrito**, nunca público.
 4. Testar sessões, tokens, permissões de exportação, detecção e recuperação.
 5. Medir tempos: detecção, confirmação, contenção efetiva, reavaliação e comunicação.
-6. Executar tabletop com injeção gradual de E01–E09 e avaliar decisões antes de revelar o resultado.
+6. Executar tabletop com injeção gradual de E01 a E09 e avaliar decisões antes de revelar o resultado.
 
 ## Não conformidades propositais do cenário
 

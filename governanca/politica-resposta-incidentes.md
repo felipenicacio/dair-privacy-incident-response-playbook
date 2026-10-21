@@ -2,7 +2,7 @@
 
 > **Modelo institucional reutilizável.** Este documento estabelece diretrizes, responsabilidades e autoridade
 > para a resposta a incidentes de segurança da informação, incluindo os que envolvem dados pessoais. Ele **não
-> contém dados de nenhuma organização específica** e **não constitui aprovação** — os campos de configuração
+> contém dados de nenhuma organização específica** e **não constitui aprovação**: os campos de configuração
 > abaixo devem ser preenchidos e o documento deve ser submetido à aprovação formal da organização antes de
 > qualquer adoção. Esta Política define diretrizes, papéis e autoridade; os procedimentos de mobilização e
 > execução estão no **Plano de Resposta a Incidentes**; os procedimentos técnicos detalhados estão no
@@ -17,10 +17,10 @@
 | Proprietário do documento (owner) | `[preencher: cargo ou área responsável pela manutenção, ex.: Diretoria de Segurança da Informação]` |
 | Aprovador | `[preencher: cargo com autoridade para aprovar, ex.: Diretoria Executiva / Comitê de Segurança]` |
 | Versão | `[preencher: ex.: 1.0]` |
-| Data de aprovação | `[preencher após aprovação formal — não inferir nem simular]` |
+| Data de aprovação | `[preencher após aprovação formal; não inferir nem simular]` |
 | Vigência | `[preencher: ex.: 24 meses a partir da aprovação, ou "até nova revisão"]` |
 | Próxima revisão programada | `[preencher]` |
-| Documentos relacionados | Plano de Resposta a Incidentes; Playbook DAIR; Instrumentos 1–5 (ver integração abaixo) |
+| Documentos relacionados | Plano de Resposta a Incidentes; Playbook DAIR; Instrumentos 1 a 5 (ver integração abaixo) |
 
 Esta Política **não é autoaplicável**: ela só produz efeitos internos após adaptação aos campos acima e aprovação
 pela autoridade competente da organização, registrada nesta tabela.
@@ -36,13 +36,13 @@ Aplica-se a:
 - empregados, estagiários e demais colaboradores da organização;
 - terceiros, prestadores de serviço e fornecedores que tratem informações ou dados pessoais em nome da
   organização, ou que operem sistemas e serviços a ela conectados;
-- sistemas, serviços, redes, aplicações e dados — próprios, hospedados por terceiros ou operados por terceiros —
+- sistemas, serviços, redes, aplicações e dados (próprios, hospedados por terceiros ou operados por terceiros),
   sob controle ou responsabilidade da organização;
 - qualquer incidente identificado por meios internos, por notificação de terceiros, por operadores, por
   fornecedores, por titulares de dados ou por autoridades.
 
 Esta Política não substitui normas setoriais específicas, cláusulas contratuais com maior exigência, nem
-orientações da Autoridade Nacional de Proteção de Dados (ANPD) ou de outros reguladores aplicáveis — nos
+orientações da Autoridade Nacional de Proteção de Dados (ANPD) ou de outros reguladores aplicáveis; nos
 conflitos, prevalece a norma ou o procedimento oficial vigente.
 
 ## 2. Definições
@@ -51,7 +51,7 @@ conflitos, prevalece a norma ou o procedimento oficial vigente.
 |---|---|
 | Evento | Ocorrência observável em um sistema ou rede, sem indicação, por si só, de violação de segurança. |
 | Suspeita de incidente | Evento ou conjunto de evidências que indica possível violação de segurança ainda não confirmada, exigindo verificação. |
-| Incidente confirmado | Violação de segurança confirmada — da confidencialidade, integridade, disponibilidade ou autenticidade — de sistemas, serviços ou dados. |
+| Incidente confirmado | Violação confirmada de segurança quanto à confidencialidade, integridade, disponibilidade ou autenticidade de sistemas, serviços ou dados. |
 | Incidente de segurança envolvendo dados pessoais | Incidente confirmado que afeta dados pessoais sob tratamento pela organização (como controladora) ou por ela operados (como operadora), nos termos do art. 46 da LGPD. |
 
 Estas definições orientam a aplicação desta Política e do Plano; os critérios técnicos de classificação de
@@ -77,8 +77,8 @@ Plano de Resposta a Incidentes e no Instrumento 2 (Avaliação de Riscos aos Tit
 
 A organização adota o DAIR (*Dynamic Approach to Incident Response*) como abordagem de referência para a
 execução operacional da resposta: Preparação, Detecção, Verificação e Triagem, seguidas do Loop de Ações de
-Resposta (Escopo, Contenção, Erradicação, Recuperação), executado de forma iterativa — com reentradas sempre que
-surgirem novas evidências, falhas de contenção, persistência do agente de ameaça ou mudança de escopo — e
+Resposta (Escopo, Contenção, Erradicação, Recuperação), executado de forma iterativa, com reentradas sempre que
+surgirem novas evidências, falhas de contenção, persistência do agente de ameaça ou mudança de escopo, e com
 Debrief ao final. Esta Política não impõe uma sequência rígida de etapas; a sequência operacional e os critérios
 de reentrada estão detalhados no Plano de Resposta a Incidentes e no Playbook DAIR.
 
@@ -101,7 +101,7 @@ de reentrada estão detalhados no Plano de Resposta a Incidentes e no Playbook D
 A organização deve nomear, para cada papel acima, o(s) titular(es) e seus substitutos no Plano de Resposta a
 Incidentes (que detalha contatos, canais e critérios de acionamento), mantendo esta Política livre de dados
 pessoais ou nominais específicos. A tabela acima estabelece responsabilidades em termos gerais; a organização
-deve detalhá-las em uma matriz RACI (Responsável, Aprovador, Consultado, Informado — ver
+deve detalhá-las em uma matriz RACI (Responsável, Aprovador, Consultado, Informado; ver
 [`governanca/01-papeis-e-escalonamento.md`](01-papeis-e-escalonamento.md) para um exemplo) por atividade de
 resposta, revisada e validada em exercício tabletop.
 
@@ -119,7 +119,7 @@ O Líder de Resposta a Incidentes, ou quem o substitua conforme definido no Plan
 Decisões que envolvam risco relevante à continuidade do negócio, exposição reputacional significativa ou
 compromisso de recursos extraordinários requerem ciência ou aprovação da Direção, conforme os limites que a
 organização definir no Plano. O Plano detalha esta autoridade em uma matriz decisão a decisão (quem decide, quem
-substitui, qual evidência a decisão deve deixar — ver Plano, seção 2.5), que complementa, sem substituir, a
+substitui, qual evidência a decisão deve deixar (ver Plano, seção 2.5), que complementa, sem substituir, a
 matriz RACI da seção 5: RACI cobre participação e coordenação; a matriz de autoridade cobre o direito de decidir.
 
 ## 7. Obrigação interna de reportar
@@ -166,7 +166,7 @@ Em nenhum caso a comunicação a um destinatário substitui ou presume a comunic
 ## 11. Governança da decisão regulatória
 
 A decisão sobre a necessidade de comunicar um incidente à ANPD e aos titulares é tomada por avaliação
-fundamentada, registrada e versionada — nunca de forma automática a partir de uma pontuação ou matriz de
+fundamentada, registrada e versionada, nunca de forma automática a partir de uma pontuação ou matriz de
 severidade isolada. A avaliação deve considerar os critérios do art. 5º da Resolução CD/ANPD nº 15/2024 (RCIS) e
 ser revisada sempre que novas evidências relevantes surgirem. Os papéis de elaboração, revisão e aprovação dessa
 avaliação, bem como o instrumento de registro, constam da seção 5 e do Instrumento 2.
@@ -184,8 +184,8 @@ avaliação, bem como o instrumento de registro, constam da seção 5 e do Instr
 
 Todo incidente, suas decisões, evidências e comunicações devem ser registrados nos instrumentos operacionais
 definidos (ver seção "Hierarquia dos documentos" no [`README.md`](../README.md)). O prazo mínimo de retenção
-observa a legislação aplicável — por exemplo, o art. 10 da Resolução CD/ANPD nº 15/2024 exige retenção mínima de
-5 anos para os registros de incidentes de segurança envolvendo dados pessoais — sem prejuízo de obrigações
+observa a legislação aplicável. Por exemplo, o art. 10 da Resolução CD/ANPD nº 15/2024 exige retenção mínima de
+5 anos para os registros de incidentes de segurança envolvendo dados pessoais, sem prejuízo de obrigações
 adicionais decorrentes de contrato, processo judicial ou regulatório em curso, que podem estender esse prazo.
 `[preencher, se aplicável: prazos de retenção adicionais definidos pela organização para outras categorias de
 registro]`.
@@ -193,7 +193,7 @@ registro]`.
 ## 14. Critérios gerais de encerramento, acompanhamento residual e reabertura
 
 O encerramento da resposta ativa é uma decisão explícita e atribuível (ver seção 6), distinta da conclusão das
-comunicações regulatórias e aos titulares e do encerramento do acompanhamento regulatório — que podem se
+comunicações regulatórias e aos titulares e do encerramento do acompanhamento regulatório, que podem se
 estender após o encerramento técnico. Riscos residuais aceitos e pendências devem ser registrados com
 responsável e prazo. Um incidente encerrado pode ser reaberto quando surgirem evidências de persistência,
 reincidência ou escopo não identificado anteriormente. Os critérios operacionais detalhados de aceite para
@@ -216,7 +216,7 @@ encerramento constam do Plano de Resposta a Incidentes.
 Qualquer exceção ao disposto nesta Política deve ser solicitada, justificada e aprovada pela autoridade
 competente definida pela organização, com registro da exceção, do prazo de vigência e do responsável. O
 tratamento de não conformidades com esta Política segue as normas internas de conduta, disciplinares e de
-compliance já vigentes na organização — esta Política não cria nem prevê sanções próprias.
+compliance já vigentes na organização; esta Política não cria nem prevê sanções próprias.
 `[preencher: referência à norma interna de conduta/disciplinar aplicável, se houver]`.
 
 ## 17. Documentos relacionados, aprovação e controle de versão
@@ -225,7 +225,7 @@ compliance já vigentes na organização — esta Política não cria nem prevê
 |---|---|
 | Plano de Resposta a Incidentes | Operacionaliza a mobilização e a coordenação da resposta com base nesta Política. |
 | Playbook DAIR | Detalha os procedimentos técnicos de execução da resposta. |
-| Instrumentos 1–5 | Registram, avaliam e controlam a execução, conforme a tabela de integração do `README.md`. |
+| Instrumentos 1 a 5 | Registram, avaliam e controlam a execução, conforme a tabela de integração do `README.md`. |
 
 Histórico de versões:
 
@@ -237,4 +237,4 @@ Histórico de versões:
 
 *Este é um modelo institucional reutilizável, de caráter educacional. Não contém dados de nenhuma organização
 específica e não produz efeitos até ser adaptado aos campos de configuração da seção 0 e formalmente aprovado
-pela autoridade competente da organização adotante. Licenciado sob CC BY 4.0 — Felipe Nicácio.*
+pela autoridade competente da organização adotante. Licenciado sob CC BY 4.0, por Felipe Nicácio.*

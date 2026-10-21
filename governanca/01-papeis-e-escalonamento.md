@@ -17,7 +17,7 @@ antes da decisão; I: mantido informado do andamento, sem participar da decisão
 comunicação é do controlador; a matriz não transfere obrigações legais. Ver também a
 [Matriz de autoridade de decisão](plano-resposta-incidentes.md#25-matriz-de-autoridade-de-decisão) do Plano, que
 nomeia quem decide (e quem substitui) para as decisões mais consequentes, com a documentação que cada uma deve
-deixar — RACI cobre participação; a matriz de autoridade cobre direito de decidir.
+deixar: RACI cobre participação; a matriz de autoridade cobre direito de decidir.
 
 ## Regras de escalonamento
 

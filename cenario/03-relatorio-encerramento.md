@@ -1,4 +1,4 @@
-# Relatório de encerramento simulado — INC-2026-001
+# Relatório de encerramento simulado: INC-2026-001
 
 **Controlador:** Aurora Comércio Digital S.A. (fictícia)  
 **Status em 20/10/2026, 14h00:** resposta técnica ativa encerrada; monitoramento e comunicações simuladas pendentes.

@@ -624,3 +624,124 @@ contagem de caracteres multibyte se mostrou inconsistente neste ambiente.
    (item 5): uma organização que priorize a conformidade tipográfica integral sobre a estabilidade de layout pode
    reavaliar esse ponto especificamente, testando o aumento de fonte nas tabelas da Parte C com conteúdo real
    antes de adotar.
+
+## 20. Validação desta rodada: melhorias de conteúdo (DAIR/ANPD/ransomware) e ABNT NBR 14724 rigorosa (Times New Roman, TOC dinâmico, numeração nativa)
+
+Esta rodada atende a duas solicitações combinadas do usuário: (a) incorporar 8 melhorias de conteúdo propostas a
+partir da análise comparativa de 3 fontes externas anexadas (E-book de incident response, Guia de Elaboração de
+PPSI/SGD, Ransomware Playbook CCCS) frente ao DAIR e ao processo de comunicação com a ANPD; e (b) substituir a
+formatação ABNT anterior (seção 19, fonte Arial, numeração manual embutida no texto, Sumário estático) por uma
+formatação mais rigorosa, explicitamente especificada pelo usuário: fonte Times New Roman 12 pt, Sumário gerado
+como campo TOC dinâmico (não texto estático), todos os títulos usando os estilos nativos Heading 1/Heading
+2/Heading 3 do Word, e numeração de títulos gerada por lista multinível vinculada a esses estilos (não mais
+texto manual embutido no parágrafo).
+
+1. **Melhorias de conteúdo incorporadas (8 itens, com a ressalva de leveza do item 4 mantida pela análise
+   anterior e não contestada pelo usuário).**
+   1. Quatro hipóteses nomeadas de extinção do processo de comunicação à ANPD (Resolução CD/ANPD nº 15/2024,
+      art. 23, I a IV) e o poder residual da autoridade de determinar medidas mesmo após a extinção formal:
+      `plano-resposta-incidentes.md` (seção 6.2), `politica-resposta-incidentes.md` (seções 10 e 14),
+      `instrumento5.js` (novo bloco "Extinção do processo de comunicação perante a ANPD", Parte C).
+   2. Registro obrigatório do motivo quando a organização decide não comunicar, mesmo sem dever legal: nova
+      coluna "Motivo da Ausência de Comunicação" em `instrumento2.py` (aba Decisao_Comunicacao), com formatação
+      condicional sinalizando a ausência de preenchimento quando a decisão (à ANPD ou aos titulares) for
+      "Decidido: não comunicar"; mesmo ponto reforçado em `politica-resposta-incidentes.md` (seções 11 e 13).
+   3. "Ampla divulgação do incidente" como poder coercitivo próprio da ANPD (LGPD, art. 48, §2º, I; Resolução
+      CD/ANPD nº 15/2024, art. 19), distinto da comunicação voluntária e persistente mesmo após o encerramento
+      formal: quinto cenário de comunicação em `politica-resposta-incidentes.md` (seção 10).
+   4. Matriz qualitativa de 3 eixos (impacto no negócio × impacto em dados × recuperabilidade, 4 níveis cada,
+      adaptada do Guia SGD/PPSI), documentada como referência opcional dentro do campo já existente de
+      severidade (`plano-resposta-incidentes.md`, seção 2.1), sem substituir a classificação qualitativa que a
+      organização já adota: decisão deliberada de não elevar o item a mudança estrutural obrigatória.
+   5. Novo anexo dedicado a ransomware (`plano-resposta-incidentes.md`, seção 7, com subseções 7.1 a 7.4):
+      autoridade de decisão sobre pagamento de resgate (nova linha na matriz de autoridade, seção 2.5), canal de
+      comunicação de crise fora de banda, verificação de integridade de backups e ordem de remediação antes de
+      reconectar, preservação de credenciais necessárias à restauração, e investigação de intrusão mais ampla
+      antes de considerar o incidente encerrado.
+   6. Vínculo entre o relatório final de encerramento e o RIPD: nova linha em `instrumento4.js` (seção 18,
+      Critérios e Autorização de Encerramento) e referência cruzada em `politica-resposta-incidentes.md`
+      (seção 17).
+   7. Indicador agregado "percentual de incidentes comunicados à ANPD dentro do prazo": campo por incidente em
+      `instrumento4.js` (seção 14) e indicador de governança agregada em `plano-resposta-incidentes.md`
+      (nova seção 6.5).
+   8. ISO 22361:2022 (gestão de crises) como referência complementar: nova linha na tabela de referências
+      normativas de `instrumento4.js` (seção 19) e em `politica-resposta-incidentes.md` (seção 17).
+   Os dois itens deliberadamente descartados na análise anterior (autoridade de contenção pré-delegada e o
+   modelo de comitê de crise em três grupos) permanecem fora do escopo, por já estarem cobertos pela autonomia
+   existente do Líder de Resposta e pela matriz RACI/matriz de autoridade já implementadas.
+2. **Troca de fonte.** `ABNT_FONT` alterada de "Arial" para "Times New Roman" em `politica.js`, `plano.js` e
+   `instrumento4.js` (constante única); em `instrumento5.js`, que não usava a constante, as 3 ocorrências
+   literais de "Arial" (estilo padrão do documento e estilos Heading 1/Heading 2) foram substituídas
+   diretamente, e uma constante `ABNT_FONT` foi adicionada para consistência com os demais arquivos.
+3. **Numeração nativa via lista multinível vinculada a estilos Heading.** Validada empiricamente antes da
+   implementação, com um script de teste isolado (`toc_test.js` e `toc_test2.js`, fora do código de produção):
+   `Document({ numbering: { config: [...] } })` define uma referência de numeração com 2 níveis (nível 0 =
+   Heading 1, nível 1 = Heading 2), e cada `paragraphStyles[].paragraph.numbering = { reference, level }` liga o
+   estilo a esse nível; o resultado, confirmado por renderização visual (LibreOffice → PDF → captura de tela),
+   reproduziu exatamente os números antes embutidos manualmente ("0.", "1.", "1.1", e também "A.", "A.1", "B.",
+   "B.1" com `LevelFormat.UPPER_LETTER` no nível 0 para o Kit), sem nenhum texto de número no parágrafo. Em
+   `politica.js`, `plano.js` e `instrumento4.js`, os textos de número antes embutidos nas funções `h1`/`h2` foram
+   removidos (a função passou a ignorar o argumento numérico recebido, preservado nos pontos de chamada para não
+   exigir alteração em cada um deles); em `instrumento4.js` e `instrumento5.js`, os 2 e 7 pontos de chamada,
+   respectivamente, que embutiam o número diretamente no texto do título (ex.: `h2("1.1 Dados do incidente")`,
+   `h2("A.1 Conteúdo mínimo...")`) tiveram o prefixo numérico removido manualmente, já que a numeração passou a
+   ser gerada pelo próprio estilo.
+4. **Conflito de estilo resolvido no Instrumento 5: títulos de bloco de registro não numerados.** A função
+   `recordBlock()` (usada para os blocos repetíveis de registro da Parte C, como "Comunicação inicial à ANPD" ou
+   "Complementação à ANPD: registro nº N") usava o estilo Heading 2 diretamente, o que, após a numeração nativa
+   ser vinculada a esse estilo, geraria números de subseção sem sentido estrutural (ex.: "A.5", "A.6") para
+   blocos de preenchimento repetível, não para subseções reais do documento. Solução: criado um estilo "Heading
+   3" (`basedOn: "Normal"`, mesma aparência visual de negrito/cor do Heading 2 anterior), deliberadamente **não**
+   vinculado à numeração, usado exclusivamente por `recordBlock()`; os títulos de seção verdadeiros (Parte A/B/C
+   e A.1-A.4/B.1-B.3) permanecem em Heading 1/Heading 2, numerados. Confirmado por inspeção visual: os blocos de
+   registro da Parte C aparecem sem prefixo numérico, exatamente como antes.
+5. **Sumário como campo TOC dinâmico, não mais texto estático.** `new TableOfContents("Sumário", { hyperlink:
+   true, headingStyleRange: "1-2" })` substituiu, em `instrumento4.js`, a lista estática de 20 parágrafos de
+   texto antes usada como Sumário; `politica.js`, `plano.js` e `instrumento5.js` (que não tinham Sumário)
+   passaram a ter esse mesmo campo logo após a capa. Verificação de schema OOXML: extração do XML bruto de
+   `toc_test.docx` confirmou a presença das tags `TOC` (código de campo), `fldChar` (6 ocorrências, delimitadores
+   de campo) e `sdt` (8 ocorrências, controles de conteúdo estruturado), exatamente como o Word gera ao inserir
+   um Sumário nativo pela interface. **Limitação conhecida, não um defeito:** a conversão `soffice --headless
+   --convert-to pdf` não recalcula automaticamente o conteúdo de campos TOC (página do Sumário renderiza em
+   branco no PDF gerado por este ambiente), porque o LibreOffice headless não executa a passagem de "atualizar
+   campos" que o Word executa ao abrir o documento; isso é consistente com, não contrário a, a própria exigência
+   do usuário de que o Sumário permaneça um campo vivo, atualizável com F9 ou clique direito → Atualizar campo,
+   em vez de texto estático. Recomenda-se, ao abrir qualquer um dos 4 documentos pela primeira vez no Microsoft
+   Word, executar essa atualização antes de considerar o Sumário definitivo.
+6. **Recuo de primeira linha, justificação e espaçamento 1,5 aplicados a "todos os parágrafos do texto
+   principal", com as exceções padrão da norma preservadas.** Interpretação adotada, consistente com a prática
+   ABNT corrente: a exigência cobre os parágrafos de corpo de texto corrido (`p`/`body`/`field`/`instr`/
+   `fillField`), e não os títulos (que seguem o próprio estilo Heading, sem recuo), os itens de lista com
+   marcador (sem recuo de primeira linha, convenção padrão) nem o conteúdo de células de tabela/quadro (que não
+   são "texto corrido" no sentido da norma). Em `instrumento4.js` e `instrumento5.js`, os auxiliares `instr()` e
+   `fillField()`, que antes não declaravam recuo/justificação/espaçamento explícitos, passaram a declará-los,
+   alinhando-se ao restante do corpo de texto.
+7. **Validação de schema (`validate.py`):** Política 154 parágrafos, Plano 367, Relatório 319, Kit 246; todos
+   aprovados sem erro. `instrumento2.py` (`DAIR_Avaliacao_Riscos_Titulares_ANPD_v0.3.xlsx` e sua versão com
+   exemplo preenchido): `recalc.py` confirmou 0 erros de fórmula em 150 fórmulas em ambos os arquivos, sem
+   alteração na contagem de fórmulas pré-existente.
+8. **Inspeção visual (conversão para PDF, LibreOffice headless, `pdftoppm`), focada nos pontos de maior risco de
+   regressão.** Capa dos 4 documentos: sem numeração nem cabeçalho (confirmado visualmente na Política e no
+   Kit). Página seguinte à capa (a do TOC): em branco, conforme a limitação conhecida do item 5. Página de
+   abertura da seção 0/1 da Política: numeração "0." e "1." geradas automaticamente, fonte Times New Roman,
+   recuo de primeira linha e justificação visíveis, marcadores de lista sem recuo. Parte A do Kit (página 3):
+   "A." e "A.1" gerados automaticamente, tabela do RCIS sem quebra de texto. Parte C do Kit (páginas 8-10,
+   região historicamente frágil do achado A07): blocos "Comunicação aos titulares", "Divulgação pública
+   alternativa", "Declaração art. 9º, §4º", "Outras providências" e o novo bloco "Extinção do processo de
+   comunicação perante a ANPD" renderizam sem quebra de texto caractere a caractere em nenhuma célula, e sem
+   numeração indevida nos títulos de bloco (confirmando que a solução do item 4 funcionou).
+9. **Verificação de disciplina de travessão/meia-risca no conteúdo novo.** Varredura Python (contagem de
+   `—` e `–`) confirmando 0 ocorrências em todo o texto adicionado nesta rodada: os 5 scripts
+   geradores editados (`politica.js`, `plano.js`, `instrumento4.js`, `instrumento5.js`, `instrumento2.py`) e os
+   2 arquivos Markdown editados (`politica-resposta-incidentes.md`, `plano-resposta-incidentes.md`).
+10. **Limitações desta rodada.** (a) O conteúdo novo foi replicado manualmente entre os geradores DOCX/XLSX e os
+    arquivos Markdown correspondentes (não há geração automática a partir de uma única fonte): uma eventual
+    divergência futura entre essas duas representações exigiria sincronização manual, como já ocorria antes
+    desta rodada; (b) como em todas as rodadas anteriores, a verificação usou LibreOffice, não Microsoft Word:
+    recomenda-se abrir os 4 documentos em Word real e executar a atualização de campos (F9) antes do uso em
+    produção, conferindo especificamente se o Sumário gerado reflete corretamente os títulos e a paginação; (c)
+    o Instrumento 5 manteve, como na rodada anterior, os tamanhos de fonte de tabela menores que 12 pt nas
+    funções auxiliares (`instr`, `fillField`, `recordBlock`, `cell`), por decisão de risco não revisitada nesta
+    rodada; (d) o item 4 (matriz de severidade de 3 eixos) foi implementado como referência textual dentro do
+    campo já existente, não como estrutura de dados própria no Instrumento 1 ou 2: uma organização que opte por
+    adotá-la formalmente precisaria criar seus próprios campos de registro.

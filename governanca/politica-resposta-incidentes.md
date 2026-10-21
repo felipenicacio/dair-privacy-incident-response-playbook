@@ -160,6 +160,11 @@ A comunicação em resposta a um incidente tem quatro destinatários possíveis,
   regulatória (seção 11).
 - **Aos titulares:** quando exigida pela avaliação de risco (LGPD, art. 48), preparada e executada conforme o
   Instrumento 5 e o Plano.
+- **Determinada pela autoridade:** além das quatro comunicações voluntárias acima, a ANPD pode determinar, como
+  medida própria e coercitiva (LGPD, art. 48, §2º, I; Resolução CD/ANPD nº 15/2024, art. 19), a ampla divulgação
+  do incidente em meios de comunicação. Esta hipótese independe de decisão voluntária da organização, pode
+  ocorrer mesmo após o encerramento formal do processo de comunicação (seção 14) e deve ser tratada como risco
+  regulatório residual a monitorar, nunca como estratégia de comunicação própria.
 
 Em nenhum caso a comunicação a um destinatário substitui ou presume a comunicação aos demais.
 
@@ -170,6 +175,11 @@ fundamentada, registrada e versionada, nunca de forma automática a partir de um
 severidade isolada. A avaliação deve considerar os critérios do art. 5º da Resolução CD/ANPD nº 15/2024 (RCIS) e
 ser revisada sempre que novas evidências relevantes surgirem. Os papéis de elaboração, revisão e aprovação dessa
 avaliação, bem como o instrumento de registro, constam da seção 5 e do Instrumento 2.
+
+Quando, após avaliação fundamentada, a organização concluir que não há dever de comunicar o incidente à ANPD ou
+aos titulares, essa conclusão e seus motivos devem ser registrados com o mesmo rigor de uma decisão de comunicar,
+no Instrumento 2: a ausência de comunicação também está sujeita a registro obrigatório (seção 13) e a eventual
+fiscalização, não sendo uma decisão isenta de documentação.
 
 ## 12. Gestão de fornecedores e comunicação operador-controlador
 
@@ -190,6 +200,10 @@ adicionais decorrentes de contrato, processo judicial ou regulatório em curso, 
 `[preencher, se aplicável: prazos de retenção adicionais definidos pela organização para outras categorias de
 registro]`.
 
+O registro de um incidente é obrigatório mesmo quando a organização conclui, de forma fundamentada, que não há
+dever de comunicação à ANPD: nesse caso, os motivos dessa conclusão integram o registro, como parte do mesmo
+dever de accountability que se aplica a uma decisão de comunicar.
+
 ## 14. Critérios gerais de encerramento, acompanhamento residual e reabertura
 
 O encerramento da resposta ativa é uma decisão explícita e atribuível (ver seção 6), distinta da conclusão das
@@ -197,7 +211,13 @@ comunicações regulatórias e aos titulares e do encerramento do acompanhamento
 estender após o encerramento técnico. Riscos residuais aceitos e pendências devem ser registrados com
 responsável e prazo. Um incidente encerrado pode ser reaberto quando surgirem evidências de persistência,
 reincidência ou escopo não identificado anteriormente. Os critérios operacionais detalhados de aceite para
-encerramento constam do Plano de Resposta a Incidentes.
+encerramento, incluindo as hipóteses específicas de extinção do processo de comunicação perante a ANPD, constam
+do Plano de Resposta a Incidentes.
+
+A extinção formal do processo de comunicação perante a ANPD não afasta o poder residual da autoridade de
+determinar, mesmo depois de extinto o processo, a adoção de medidas adicionais de segurança relacionadas ao
+incidente, inclusive a ampla divulgação mencionada na seção 10. Esse risco residual deve permanecer monitorado
+pela organização até que não haja mais exposição razoavelmente previsível.
 
 ## 15. Treinamento, exercícios, revisão e melhoria contínua
 
@@ -226,6 +246,8 @@ compliance já vigentes na organização; esta Política não cria nem prevê sa
 | Plano de Resposta a Incidentes | Operacionaliza a mobilização e a coordenação da resposta com base nesta Política. |
 | Playbook DAIR | Detalha os procedimentos técnicos de execução da resposta. |
 | Instrumentos 1 a 5 | Registram, avaliam e controlam a execução, conforme a tabela de integração do `README.md`. |
+| Relatório de Impacto à Proteção de Dados (RIPD) | Quando aplicável, deve ser atualizado a partir das conclusões do relatório final de encerramento do incidente (Instrumento 4), para que as medidas de mitigação e os riscos residuais identificados alimentem a próxima revisão do RIPD. |
+| ISO 22361:2022 (gestão de crises) | Referência complementar, não normativa, para a condução da comunicação e da governança de crise em incidentes de grande impacto reputacional ou operacional. |
 
 Histórico de versões:
 

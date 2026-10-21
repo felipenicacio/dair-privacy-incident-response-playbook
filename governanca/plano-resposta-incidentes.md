@@ -101,6 +101,20 @@ disponibilidade, autenticidade), criticidade dos sistemas/dados afetados, extens
 `[preencher: se a organização adotar uma matriz de severidade com níveis (ex.: Baixa/Média/Alta/Crítica),
 detalhar aqui os critérios e limiares de cada nível]`.
 
+Como referência opcional, não substitutiva do campo acima, a organização pode adotar um modelo qualitativo de
+três eixos (adaptado do Guia de Elaboração de PPSI/SGD), combinando impacto no negócio, impacto em dados e
+recuperabilidade, cada um em quatro níveis:
+
+| Eixo | Nível 1 (baixo) | Nível 2 | Nível 3 | Nível 4 (crítico) |
+|---|---|---|---|---|
+| Impacto no negócio | Sem efeito perceptível na operação | Degradação pontual, sem interrupção de serviço essencial | Interrupção de serviço essencial, com contorno disponível | Interrupção de serviço essencial, sem contorno disponível |
+| Impacto em dados | Nenhum dado pessoal ou sensível envolvido | Dados pessoais comuns, volume limitado | Dados pessoais sensíveis, ou volume expressivo de dados comuns | Dados sensíveis em volume expressivo, ou dados de grupos vulneráveis |
+| Recuperabilidade | Restauração imediata, sem perda | Restauração em horas, perda mínima | Restauração em dias, perda parcial relevante | Restauração incerta ou com perda relevante e irreversível |
+
+Este modelo de referência não substitui a classificação qualitativa já adotada pela organização no campo acima;
+serve apenas como ponto de partida para quem ainda não tiver definido níveis e limiares próprios, e deve ser
+adaptado, nunca aplicado de forma automática.
+
 Uma eventual matriz de severidade técnica orienta a mobilização de recursos e a prioridade operacional: **ela
 não decide, por si só, a obrigação de comunicação à ANPD**, que depende da avaliação fundamentada de risco aos
 titulares (seção 4 e Instrumento 2), ainda que incidentes de maior severidade técnica tendam, na prática, a
@@ -150,6 +164,7 @@ cumpre para a participação, mas aqui para a autoridade de decidir.
 | Autorizar o envio da comunicação à ANPD | Representante legalmente constituído do controlador | N/A | Aprovação registrada no Instrumento 5, Parte A/C, antes do peticionamento |
 | Autorizar o envio da comunicação aos titulares | Representante autorizado do controlador | N/A | Aprovação registrada no Instrumento 5, Parte B/C, antes do envio |
 | Declarar o encerramento do acompanhamento regulatório | Encarregado, com ciência do Jurídico | N/A | Registro de encerramento no Instrumento 5, Parte C |
+| Decidir sobre pagamento de resgate em incidente de ransomware | Direção, com ciência prévia do Jurídico e contato prévio com a autoridade policial | N/A: decisão não delegável por seu caráter excepcional | Registro da decisão, da avaliação de risco que a fundamentou e do contato com a autoridade policial, mesmo quando a decisão for não pagar (seção 7) |
 
 Esta matriz é um ponto de partida; a organização deve adaptar autoridades e delegados aos seus próprios cargos e
 substituir os nomes de papel pelos titulares reais na seção 1.3, nunca aqui, que permanece o modelo limpo.
@@ -251,6 +266,11 @@ negócio (ex.: operação restabelecida dentro dos parâmetros aceitáveis). A d
 - riscos residuais aceitos, com responsável e prazo de acompanhamento;
 - pendências não resolvidas, com responsável e prazo.
 
+Quando a abertura do incidente tiver sido comunicada ao Comitê Executivo, ao Conselho ou a reguladores setoriais
+(por exemplo, Banco Central ou SUSEP), o encerramento da resposta ativa e, quando aplicável, do acompanhamento
+regulatório também deve ser formalmente comunicado a esses mesmos destinatários, para que o registro de
+abertura e de encerramento fique simétrico.
+
 ### 6.2 Três encerramentos distintos
 
 O encerramento técnico **não** implica, por si só, a conclusão das comunicações regulatórias/aos titulares nem o
@@ -261,6 +281,15 @@ encerramento do acompanhamento regulatório: são três estados distintos, regis
 | Encerramento técnico | Resposta ativa (Scope/Contain/Eradicate/Recover) concluída | Instrumento 1 |
 | Conclusão das comunicações | Comunicação à ANPD e aos titulares preparadas, enviadas e comprovadas (quando devidas) | Instrumento 5, Parte C |
 | Encerramento do acompanhamento regulatório | Processo perante a ANPD extinto, ou requisições adicionais respondidas e sem pendência | Instrumento 5, Parte C (registro "Outras providências") |
+
+A extinção do processo de comunicação perante a ANPD, especificamente, ocorre em uma das seguintes hipóteses
+(Resolução CD/ANPD nº 15/2024, art. 23): (i) não identificadas evidências suficientes da ocorrência do
+incidente; (ii) a ANPD conclui que o incidente não possui potencial de risco ou dano relevante aos titulares;
+(iii) o incidente não envolve dados pessoais; ou (iv) tomadas as medidas adicionais de mitigação ou reversão
+determinadas pela ANPD e comprovada a comunicação aos titulares, quando devida. Mesmo após essa extinção formal,
+a ANPD pode determinar a adoção de medidas adicionais de segurança relacionadas ao incidente (Política, seção
+14), inclusive a ampla divulgação do incidente (Política, seção 10): essa possibilidade deve ser monitorada como
+pendência residual, não tratada como encerramento definitivo e irrevogável.
 
 ### 6.3 Reabertura
 
@@ -285,6 +314,56 @@ com encerramento técnico gera um debrief (Instrumento 4), com:
   **uma ação corretiva só é considerada concluída mediante essa prova, nunca apenas pela afirmação de que foi
   feita**;
 - lições aprendidas incorporadas, quando aplicável, à revisão da Política, deste Plano e do Playbook.
+
+### 6.5 Indicadores de governança regulatória
+
+Além dos indicadores técnicos de cada incidente (seção 6.1), a organização deve acompanhar, de forma agregada e
+periódica, indicadores de governança regulatória, entre eles o percentual de incidentes com comunicação à ANPD
+realizada dentro do prazo legal aplicável (RCIS, arts. 6º e 9º). O registro, por incidente, da pontualidade da
+comunicação é feito no Instrumento 4; a consolidação periódica deste indicador entre incidentes é
+responsabilidade da organização, fora do escopo deste Plano.
+
+## 7. Anexo: considerações específicas para incidentes de ransomware
+
+Este anexo complementa, sem substituir, os waypoints do DAIR (seção 3) e a trilha de privacidade (seção 4) para
+a situação específica de um incidente de ransomware, em que a disponibilidade dos próprios sistemas de resposta
+pode estar comprometida.
+
+### 7.1 Canal de comunicação de crise fora de banda
+
+Um incidente de ransomware pode comprometer a mesma infraestrutura de comunicação interna usada para coordenar
+a resposta (e-mail corporativo, mensageria interna, telefonia IP), de modo que o atacante pode estar lendo ou
+monitorando o canal de acionamento definido na seção 1.2. A organização deve manter definido, previamente, um
+canal de comunicação de crise fora de banda (*out-of-band*), que não dependa da infraestrutura potencialmente
+comprometida, para uso exclusivo durante incidentes de ransomware ou sempre que houver suspeita razoável de
+monitoramento do canal primário.
+
+`[preencher: canal fora de banda definido para uso em incidentes de ransomware, ex.: aplicativo de mensagens
+pessoal dos membros do comitê, linha telefônica externa, ou encontro presencial]`.
+
+### 7.2 Decisão sobre pagamento de resgate
+
+A decisão sobre pagar ou não um resgate é de competência exclusiva da Direção, não delegável, conforme a matriz
+de autoridade (seção 2.5), e deve ser precedida de contato com a autoridade policial competente, mesmo quando a
+organização conclua por não pagar. O pagamento do resgate não garante a recuperação dos dados nem a ausência de
+divulgação posterior, e deve ser tratado como mitigação de risco incerta, nunca como solução garantida.
+
+### 7.3 Restauração de backups
+
+- Verificar a integridade e a ausência de comprometimento dos backups antes de iniciar a restauração: um backup
+  recente pode já conter o mecanismo de persistência do atacante.
+- Respeitar a ordem de remediação: corrigir a vulnerabilidade de entrada identificada antes de reconectar os
+  sistemas restaurados à rede, para não reintroduzir o mesmo vetor de acesso.
+- Verificar, antes da restauração, se as credenciais necessárias para acessar o próprio sistema de backup não
+  foram invalidadas ou alteradas durante a contenção, o que inviabilizaria a restauração no momento em que ela
+  for necessária.
+
+### 7.4 Investigação de intrusão mais ampla
+
+Um ransomware é, com frequência, apenas o estágio final visível de uma intrusão mais ampla e anterior. Antes de
+considerar o incidente encerrado, a investigação deve avaliar especificamente se há evidência de acesso,
+movimentação lateral ou exfiltração anteriores à detonação do ransomware, e não apenas remediar os efeitos
+diretamente observados.
 
 ---
 

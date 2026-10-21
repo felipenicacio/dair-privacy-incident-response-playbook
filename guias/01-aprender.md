@@ -1,8 +1,8 @@
-# Jornada 1 — Aprender o DAIR com um incidente simulado
+# Jornada 1: Aprender o DAIR com um incidente simulado
 
 **Público:** analistas de segurança, profissionais de privacidade, gestores, estudantes e instrutores.  
 **Objetivo:** compreender por que a resposta a incidentes exige reavaliação contínua.  
-**Duração sugerida:** 25–40 minutos. O tempo é apenas referência para treinamento.
+**Duração sugerida:** 25 a 40 minutos. O tempo é apenas referência para treinamento.
 
 ## Percurso
 

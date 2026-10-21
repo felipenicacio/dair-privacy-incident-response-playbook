@@ -1,11 +1,11 @@
-# Checklist operacional — INC-2026-001
+# Checklist operacional: INC-2026-001
 
 Estados referem-se apenas ao **exercício fictício**.
 
 ## Prepare
 - [x] Definir equipes, encarregado e cadeia de decisão.
 - [x] Identificar fontes de log e funções do CRM.
-- [ ] Automatizar revogação de tokens — falha deliberada do cenário.
+- [ ] Automatizar revogação de tokens (falha deliberada do cenário).
 
 ## Detect / Verify and Triage
 - [x] Preservar alerta original e horários.
@@ -16,7 +16,7 @@ Estados referem-se apenas ao **exercício fictício**.
 ## Primeiro ciclo: Scope / Contain / Eradicate / Recover
 - [x] Delimitar conta e consulta a 200 registros.
 - [x] Bloquear conta e alterar credencial.
-- [ ] Revogar token de API — falha inicial intencional.
+- [ ] Revogar token de API (falha inicial intencional).
 - [x] Recuperar serviço de suporte de forma limitada.
 
 ## Segundo ciclo: após nova evidência
@@ -30,6 +30,6 @@ Estados referem-se apenas ao **exercício fictício**.
 ## Debrief e privacidade
 - [x] Preservar cronologia, autoria e versões das decisões.
 - [x] Preparar comunicação simulada e monitorar prazo.
-- [ ] Protocolar comunicação à ANPD — não aplicável no exercício.
-- [ ] Comunicar titulares reais — não aplicável no exercício.
+- [ ] Protocolar comunicação à ANPD (não aplicável no exercício).
+- [ ] Comunicar titulares reais (não aplicável no exercício).
 - [x] Documentar cadeia de custódia, retenção e lições aprendidas.

@@ -1,4 +1,4 @@
-# Procedimento operacional — DAIR aplicado a dados pessoais
+# Procedimento operacional: DAIR aplicado a dados pessoais
 
 ## Princípio
 
@@ -37,7 +37,7 @@ DAIR é um modelo dinâmico e iterativo. Os waypoints orientam decisões; **não
 
 **Saída:** incidente declarado, prioridade e próxima decisão.
 
-## Response Actions Loop — primeira iteração
+## Response Actions Loop: primeira iteração
 
 ### Scope 1
 - Delimitar conta, dispositivo, logs e 200 registros; registrar o que é desconhecido.
@@ -56,7 +56,7 @@ DAIR é um modelo dinâmico e iterativo. Os waypoints orientam decisões; **não
 - Restabelecer suporte de forma restrita, com monitoração adicional.
 - Manter pendências e não declarar encerramento técnico.
 
-## Reentrada no loop — segunda iteração
+## Reentrada no loop: segunda iteração
 
 **Nova evidência crítica:** E04 identifica exportação de 30.000 registros via token persistente às 10h42.
 

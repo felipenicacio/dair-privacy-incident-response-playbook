@@ -19,13 +19,13 @@ Horários de Brasília (UTC−03:00). **Nenhuma comunicação foi realmente envi
 
 ## Registro de decisões
 
-**D-01 — 09h25.** Acesso indevido a 200 registros confirmado; abertura de incidente com dados pessoais. Ainda não há prova de exportação. Líder IR e encarregado determinam avaliação de risco v1.
+**D-01: 09h25.** Acesso indevido a 200 registros confirmado; abertura de incidente com dados pessoais. Ainda não há prova de exportação. Líder IR e encarregado determinam avaliação de risco v1.
 
-**D-02 — 10h42.** Token persistente utilizado após bloqueio da conta: primeira contenção insuficiente. O líder IR determina nova iteração do loop e suspensão de exportações.
+**D-02: 10h42.** Token persistente utilizado após bloqueio da conta: primeira contenção insuficiente. O líder IR determina nova iteração do loop e suspensão de exportações.
 
-**D-03 — 12h10.** Com 30.000 titulares, dados financeiros relativos a pedidos e cópia externa, o controlador fictício considera atendidos os requisitos cumulativos do art. 5º do RCIS e determina elaboração de comunicações regulatórias, sujeitas à validação jurídica.
+**D-03: 12h10.** Com 30.000 titulares, dados financeiros relativos a pedidos e cópia externa, o controlador fictício considera atendidos os requisitos cumulativos do art. 5º do RCIS e determina elaboração de comunicações regulatórias, sujeitas à validação jurídica.
 
-**D-04 — 20/10 às 14h00.** Encerramento da resposta técnica ativa autorizado somente após revogação de tokens, avaliação de acessos, acompanhamento reforçado e registro explícito do risco residual. Comunicação e monitoramento seguem como pendências.
+**D-04: 20/10 às 14h00.** Encerramento da resposta técnica ativa autorizado somente após revogação de tokens, avaliação de acessos, acompanhamento reforçado e registro explícito do risco residual. Comunicação e monitoramento seguem como pendências.
 
 ## Aprendizado-chave
 

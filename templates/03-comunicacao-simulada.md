@@ -1,10 +1,10 @@
-# Comunicações simuladas — NÃO ENVIADAS
+# Comunicações simuladas: NÃO ENVIADAS
 
 **Exclusivamente educacional.** Nenhum texto foi protocolado ou enviado. Não substitui formulários oficiais, identidade válida do controlador ou exigências integrais dos arts. 6º e 9º do RCIS.
 
 ## 1. Síntese simulada para ANPD
 
-**Assunto:** Comunicação simulada de incidente com dados pessoais — INC-2026-001
+**Assunto:** Comunicação simulada de incidente com dados pessoais: INC-2026-001
 
 A Aurora Comércio Digital S.A., organização fictícia deste exercício, identificou em 19 de outubro de 2026, às 09h25 (horário de Brasília), acesso não autorizado a dados pessoais em seu CRM, decorrente do uso indevido de uma conta administrativa e de um token de API associado. A investigação simulada confirmou exportação de dados de 30.000 titulares.
 
@@ -18,7 +18,7 @@ A avaliação simulada concluiu existir potencial de afetação significativa de
 
 ## 2. Exemplo simulado para titulares
 
-**Assunto:** Informação importante sobre segurança de seus dados — exercício fictício
+**Assunto:** Informação importante sobre segurança de seus dados (exercício fictício)
 
 A Aurora Comércio Digital S.A. informa que, em 19 de outubro de 2026, identificou acesso não autorizado ao seu sistema de relacionamento com clientes, com exportação de dados de aproximadamente 30 mil pessoas. As informações envolvem nome, CPF, telefone, e-mail, endereço e informações sobre valores e datas de pedidos.
 

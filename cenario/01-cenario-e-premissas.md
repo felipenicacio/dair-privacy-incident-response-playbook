@@ -1,4 +1,4 @@
-# Cenário fictício — INC-2026-001
+# Cenário fictício: INC-2026-001
 
 ## Contexto
 

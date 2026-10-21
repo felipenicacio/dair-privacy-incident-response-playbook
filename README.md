@@ -1,14 +1,14 @@
 # DAIR Privacy Incident Response Playbook
 
-**Versão 0.3.0 — Governança institucional, instrumentos operacionais e correção pós-auditoria técnica** · **20 de outubro de 2026** · **Felipe Nicácio**
+**Versão 0.3.0: governança institucional, instrumentos operacionais e correção pós-auditoria técnica** · **20 de outubro de 2026** · **Felipe Nicácio**
 
-> Esta revisão acrescenta a **Política** e o **Plano de Resposta a Incidentes** — modelos institucionais
-> reutilizáveis, sem dados de nenhuma organização específica — e ajusta o Instrumento 5 (retitulado "Kit de
-> Preparação e Controle das Comunicações ANPD/Titulares"), além de corrigir 18 achados (A01–A18) de uma auditoria
-> técnica independente sobre o commit `f81732b` (v0.3 original) — identificadores agora são manuais e estáveis, a
+> Esta revisão acrescenta a **Política** e o **Plano de Resposta a Incidentes** (modelos institucionais
+> reutilizáveis, sem dados de nenhuma organização específica) e ajusta o Instrumento 5 (retitulado "Kit de
+> Preparação e Controle das Comunicações ANPD/Titulares"), além de corrigir 18 achados (A01 a A18) de uma auditoria
+> técnica independente sobre o commit `f81732b` (v0.3 original): os identificadores agora são manuais e estáveis, a
 > reconciliação entre versões de avaliação regulatória foi corrigida, os artigos do art. 5º do RCIS foram
 > referenciados corretamente (incisos I a VI, não apenas o II), e os prazos passam a separar cálculo de apoio de
-> prazo validado. Ver a [matriz de achados A01–A18](validacao/matriz-achados-A01-A18.md) e o [relatório de
+> prazo validado. Ver a [matriz de achados A01 a A18](validacao/matriz-achados-A01-A18.md) e o [relatório de
 > validação atualizado](validacao/relatorio-validacao-v0.3.md).
 
 > Projeto aberto e independente de apoio à resposta a incidentes envolvendo dados pessoais. O cenário é fictício. Não é publicação oficial ou endossada pela SANS, ANPD ou NIST e não substitui decisões técnicas ou jurídicas contextualizadas.
@@ -19,14 +19,14 @@ O projeto adapta o **Dynamic Approach to Incident Response (DAIR)**, de Joshua W
 
 | Quero... | Por onde começar | O que obtenho |
 |---|---|---|
-| **Aprender** o modelo | 📖 [Jornada 1 — Aprender](guias/01-aprender.md) | Estudo guiado de um incidente e suas duas iterações DAIR |
-| **Implementar** na minha organização | 🛠️ [Jornada 2 — Implementar](guias/02-implementar.md) | Sequência de adaptação, responsabilidades, controles e validação — começando pela Política e pelo Plano |
-| **Testar minha equipe** | 🧪 [Jornada 3 — Tabletop](guias/03-testar-equipe.md) | Exercício manual com quatro rodadas, perguntas e avaliação |
-| **Usar os instrumentos editáveis** | 📊 [Jornada 4 — Utilizar os instrumentos](guias/04-utilizar-instrumentos.md) | Planilhas e documentos Word prontos para uso operacional |
+| **Aprender** o modelo | 📖 [Jornada 1: Aprender](guias/01-aprender.md) | Estudo guiado de um incidente e suas duas iterações DAIR |
+| **Implementar** na minha organização | 🛠️ [Jornada 2: Implementar](guias/02-implementar.md) | Sequência de adaptação, responsabilidades, controles e validação, começando pela Política e pelo Plano |
+| **Testar minha equipe** | 🧪 [Jornada 3: Tabletop](guias/03-testar-equipe.md) | Exercício manual com quatro rodadas, perguntas e avaliação |
+| **Usar os instrumentos editáveis** | 📊 [Jornada 4: Utilizar os instrumentos](guias/04-utilizar-instrumentos.md) | Planilhas e documentos Word prontos para uso operacional |
 
 ## Hierarquia dos documentos
 
-Da diretriz à execução registrada, em ordem decrescente de abstração — cada nível se apoia no anterior e nenhum
+Da diretriz à execução registrada, em ordem decrescente de abstração. Cada nível se apoia no anterior e nenhum
 duplica o conteúdo normativo do outro:
 
 | Nível | Documento | Função |
@@ -34,14 +34,14 @@ duplica o conteúdo normativo do outro:
 | 1 | [Política de Resposta a Incidentes](governanca/politica-resposta-incidentes.md) ([.docx](instrumentos/word/DAIR_Politica_Resposta_Incidentes_v0.3.docx)) | Diretrizes, responsabilidades e autoridade |
 | 2 | [Plano de Resposta a Incidentes](governanca/plano-resposta-incidentes.md) ([.docx](instrumentos/word/DAIR_Plano_Resposta_Incidentes_v0.3.docx)) | Mobilização e coordenação da resposta |
 | 3 | [Playbook DAIR](playbook/01-procedimento-operacional.md) | Procedimentos técnicos e orientação de execução |
-| 4 | Instrumentos 1–5 (abaixo) | Registro, avaliação, execução e comunicação |
+| 4 | Instrumentos 1 a 5 (abaixo) | Registro, avaliação, execução e comunicação |
 | 5 | [Exemplos](instrumentos/exemplos/) e [cenário](cenario/01-cenario-e-premissas.md) | Treinamento com dados fictícios |
 
-### Tabela de integração — quem usa o quê, para quê
+### Tabela de integração: quem usa o quê, para quê
 
 | Atividade | Documento orientador | Instrumento usado | Responsável típico | Registro produzido |
 |---|---|---|---|---|
-| Definir papéis, autoridade e obrigação de reportar | Política (seções 5–7) | — | Direção / Líder de Resposta | Papéis nomeados no Plano, seção 1.3 |
+| Definir papéis, autoridade e obrigação de reportar | Política (seções 5 a 7) | N/A | Direção / Líder de Resposta | Papéis nomeados no Plano, seção 1.3 |
 | Ativar e mobilizar a resposta | Plano (seção 1) | Instrumento 1 | Líder de Resposta | Registro de abertura do incidente |
 | Classificar severidade e escalonar | Plano (seção 2) | Instrumento 1 | Líder de Resposta | Classificação técnica registrada |
 | Executar Prepare/Detect/Verify/Loop/Debrief | Plano (seção 3) + Playbook | Instrumentos 1 e 3 | Segurança / TI | Eventos, decisões, checklist |
@@ -53,7 +53,7 @@ duplica o conteúdo normativo do outro:
 O registro central do incidente é o **Instrumento 1**; as avaliações de risco são **versionadas no Instrumento
 2**; as decisões de contenção/erradicação/recuperação ficam no **Instrumento 1 e 3**; as evidências têm cadeia de
 custódia no **Instrumento 1**; as tarefas de resposta técnica, no **Instrumento 3**; e as provas de comunicação,
-no **Instrumento 5, Parte C** — cada informação tem um único lugar de registro, referenciado pelos demais
+no **Instrumento 5, Parte C**; cada informação tem um único lugar de registro, referenciado pelos demais
 documentos por identificador (nunca duplicado como texto livre em mais de um lugar).
 
 ## Instrumentos operacionais editáveis
@@ -85,20 +85,20 @@ Em 19/10/2026, uma empresa fictícia detecta acesso anômalo em sua conta admini
 - [Relatório de encerramento](cenario/03-relatorio-encerramento.md)
 
 ### Governança e privacidade
-- [Política de Resposta a Incidentes](governanca/politica-resposta-incidentes.md) ([.docx](instrumentos/word/DAIR_Politica_Resposta_Incidentes_v0.3.docx)) — modelo institucional, sem dados de organização específica
-- [Plano de Resposta a Incidentes](governanca/plano-resposta-incidentes.md) ([.docx](instrumentos/word/DAIR_Plano_Resposta_Incidentes_v0.3.docx)) — modelo institucional, sem dados de organização específica
-- [Papéis e escalonamento](governanca/01-papeis-e-escalonamento.md) *(aplicado ao cenário fictício — para o modelo institucional, ver Política/Plano acima)*
+- [Política de Resposta a Incidentes](governanca/politica-resposta-incidentes.md) ([.docx](instrumentos/word/DAIR_Politica_Resposta_Incidentes_v0.3.docx)): modelo institucional, sem dados de organização específica
+- [Plano de Resposta a Incidentes](governanca/plano-resposta-incidentes.md) ([.docx](instrumentos/word/DAIR_Plano_Resposta_Incidentes_v0.3.docx)): modelo institucional, sem dados de organização específica
+- [Papéis e escalonamento](governanca/01-papeis-e-escalonamento.md) *(aplicado ao cenário fictício; para o modelo institucional, ver Política/Plano acima)*
 - [Critérios de aceite](governanca/02-criterios-aceite.md)
-- [Avaliação de riscos aos titulares — exemplo preenchido](templates/01-avaliacao-risco-titulares.md)
-- [Registro de incidente e evidências — exemplo preenchido](templates/02-registro-incidente.md)
-- [Comunicações simuladas — não enviadas](templates/03-comunicacao-simulada.md)
-- [Checklist operacional — exercício](templates/04-checklist-operacional.md)
+- [Avaliação de riscos aos titulares: exemplo preenchido](templates/01-avaliacao-risco-titulares.md)
+- [Registro de incidente e evidências: exemplo preenchido](templates/02-registro-incidente.md)
+- [Comunicações simuladas: não enviadas](templates/03-comunicacao-simulada.md)
+- [Checklist operacional: exercício](templates/04-checklist-operacional.md)
 
 ### Instrumentos operacionais (v0.3)
 - [Guia de utilização dos instrumentos](guias/04-utilizar-instrumentos.md)
 - [Instrumentos em Excel](instrumentos/excel/) · [Instrumentos em Word](instrumentos/word/) · [Conjunto demonstrativo](instrumentos/exemplos/)
 - [Relatório de validação técnica v0.3](validacao/relatorio-validacao-v0.3.md)
-- [Matriz de achados da auditoria — A01 a A18](validacao/matriz-achados-A01-A18.md)
+- [Matriz de achados da auditoria: A01 a A18](validacao/matriz-achados-A01-A18.md)
 
 ### Referências
 - [Fontes, atribuições e limitações](referencias/fontes-e-atribuicoes.md)
@@ -111,15 +111,15 @@ Em 19/10/2026, uma empresa fictícia detecta acesso anômalo em sua conta admini
    1. Adapte e aprove formalmente a **Política de Resposta a Incidentes** (campos de configuração na seção 0).
    2. Adapte e aprove o **Plano de Resposta a Incidentes**, preenchendo a lista real de contatos, canais e critérios de severidade/escalonamento da organização.
    3. Prepare contatos, acessos e controles (Plano, seções 1.3 e 1.5) e revise o Playbook DAIR frente aos sistemas e contratos reais.
-   4. Treine e exercite a equipe (Jornada 3 — Tabletop) com o Plano aprovado.
-   5. Só então use os Instrumentos 1–5 operacionalmente, em incidentes reais — nunca os arquivos de exemplo preenchidos, que **não são formulários prontos para uso em incidentes reais**.
+   4. Treine e exercite a equipe (Jornada 3: Tabletop) com o Plano aprovado.
+   5. Só então use os Instrumentos 1 a 5 operacionalmente, em incidentes reais; nunca os arquivos de exemplo preenchidos, que **não são formulários prontos para uso em incidentes reais**.
 3. **Para testar:** um facilitador deve entregar as evidências gradualmente e manter a cronologia de referência reservada até o debrief.
 
 **Não publique dados pessoais reais, tokens, credenciais, registros forenses ou informações restritas em issues, discussões ou pull requests públicos.** Use ambiente interno controlado para incidentes efetivos.
 
 ## Limitações da versão 0.3
 
-Os instrumentos não possuem sincronização automática entre si — os identificadores (EVT-, DEC-, EVD-, ACA-, AVR-, CIC-, CHK-) são **manuais e estáveis** (não gerados por fórmula de posição de linha), com detecção de duplicidade, e são eles — não a posição física das linhas — que ligam os registros entre abas e entre instrumentos. Não há automação SOAR nem geração automática de relatório a partir das planilhas. Os cálculos de prazo regulatório são apoio em dias úteis simples (função WORKDAY, sem feriados) — o campo que efetivamente vale é o "Prazo Aplicável Validado", preenchido manualmente com fundamento, calendário de referência e responsável; feriados, regras de pequeno porte (que não decorrem do nome/porte aparente da organização) e exceções setoriais específicas devem sempre ser confirmados pelo Jurídico caso a caso. A avaliação regulatória deve sempre ser validada no contexto do incidente, conforme normas vigentes — "larga escala" não tem limiar numérico automático. As faixas de linhas pré-formatadas em cada planilha (até ~500 registros, conforme o instrumento) são generosas e testadas, mas fixas, não ilimitadas. Ver o [relatório de validação](validacao/relatorio-validacao-v0.3.md) e a [matriz de achados A01–A18](validacao/matriz-achados-A01-A18.md) para o detalhamento completo, inclusive pontos que ainda exigem revisão jurídica/técnica humana.
+Os instrumentos não possuem sincronização automática entre si: os identificadores (EVT-, DEC-, EVD-, ACA-, AVR-, CIC-, CHK-) são **manuais e estáveis** (não gerados por fórmula de posição de linha), com detecção de duplicidade, e são eles, não a posição física das linhas, que ligam os registros entre abas e entre instrumentos. Não há automação SOAR nem geração automática de relatório a partir das planilhas. Os cálculos de prazo regulatório são apoio em dias úteis simples (função WORKDAY, sem feriados); o campo que efetivamente vale é o "Prazo Aplicável Validado", preenchido manualmente com fundamento, calendário de referência e responsável; feriados, regras de pequeno porte (que não decorrem do nome/porte aparente da organização) e exceções setoriais específicas devem sempre ser confirmados pelo Jurídico caso a caso. A avaliação regulatória deve sempre ser validada no contexto do incidente, conforme normas vigentes; "larga escala" não tem limiar numérico automático. As faixas de linhas pré-formatadas em cada planilha (até ~500 registros, conforme o instrumento) são generosas e testadas, mas fixas, não ilimitadas. Ver o [relatório de validação](validacao/relatorio-validacao-v0.3.md) e a [matriz de achados A01 a A18](validacao/matriz-achados-A01-A18.md) para o detalhamento completo, inclusive pontos que ainda exigem revisão jurídica/técnica humana.
 
 ## Próximas evoluções
 
